@@ -1,0 +1,73 @@
+---
+title: Blur Text
+description: Smooth blur-to-focus text animation creating a coming-into-focus effect
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SplitText from "@/components/showcase/split-text";
+
+import {
+  sourceTsx,
+  sourceJsx,
+  blurUsageTsx,
+  blurUsageJsx,
+} from "@/registry/text-animations/index.tsx";
+
+### Blur Focus Effect
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Blur focus animation"
+        animation="blur"
+        className="text-4xl font-bold"
+        staggerDelay={0.08}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: blurUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: blurUsageJsx },
+    ],
+  }}
+/>
+
+## Use Cases
+
+- **Hero sections** - Create dramatic text reveals
+- **Loading states** - Simulate content coming into focus
+- **Typography emphasis** - Draw attention to important text
+- **Progressive disclosure** - Reveal information gradually
+
+## Props
+
+| Prop         | Type                  | Default     | Description                                     |
+| ------------ | --------------------- | ----------- | ----------------------------------------------- |
+| text         | string                | -           | Text to animate                                 |
+| animation    | AnimationType         | "fadeUp"    | Type of animation to apply                      |
+| className    | string                | -           | Additional CSS classes                          |
+| delay        | number                | 0           | Initial delay before animation starts (seconds) |
+| duration     | number                | 0.5         | Duration of each character animation (seconds)  |
+| staggerDelay | number                | 0.03        | Delay between each character (seconds)          |
+| by           | "character" \| "word" | "character" | Split text by characters or words               |
+| once         | boolean               | true        | Animate only once when in view                  |

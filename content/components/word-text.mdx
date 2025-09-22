@@ -1,0 +1,199 @@
+---
+title: Word-by-Word Text
+description: Animate text word by word instead of character by character for different pacing
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SplitText from "@/components/showcase/split-text";
+
+import {
+  sourceTsx,
+  sourceJsx,
+  wordUsageTsx,
+  wordUsageJsx,
+} from "@/registry/text-animations/index.tsx";
+
+### Word Animation
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Word by word animation effect"
+        animation="fadeUp"
+        by="word"
+        className="text-3xl font-semibold"
+        staggerDelay={0.15}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: wordUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: wordUsageJsx },
+    ],
+  }}
+/>
+
+### Different variations
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="space-y-8 text-center py-8 flex flex-col">
+      <SplitText
+        text="Scale word animation"
+        animation="scale"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+      />
+      <SplitText
+        text="Slide left word animation"
+        animation="slideLeft"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+        delay={1}
+      />
+      <SplitText
+        text="Blur word animation effect"
+        animation="blur"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.15}
+        delay={2}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { 
+        language: "tsx", 
+        filename: "usage.tsx", 
+        code: `import SplitText from "@/components/showcase/split-text";
+
+export default function MultiWordExample() {
+  return (
+    <div className="space-y-8 text-center">
+      <SplitText
+        text="Scale word animation"
+        animation="scale"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+      />
+      <SplitText
+        text="Slide left word animation"
+        animation="slideLeft"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+        delay={1}
+      />
+      <SplitText
+        text="Blur word animation effect"
+        animation="blur"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.15}
+        delay={2}
+      />
+    </div>
+  );
+}` 
+      },
+      { 
+        language: "jsx", 
+        filename: "usage.jsx", 
+        code: `import SplitText from "@/components/showcase/split-text";
+
+export default function MultiWordExample() {
+  return (
+    <div className="space-y-8 text-center">
+      <SplitText
+        text="Scale word animation"
+        animation="scale"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+      />
+      <SplitText
+        text="Slide left word animation"
+        animation="slideLeft"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.12}
+        delay={1}
+      />
+      <SplitText
+        text="Blur word animation effect"
+        animation="blur"
+        by="word"
+        className="text-2xl font-semibold"
+        staggerDelay={0.15}
+        delay={2}
+      />
+    </div>
+  );
+}` 
+      },
+    ],
+  }}
+/>
+
+## Best Practices
+
+- **Longer text**: Use word animations for sentences and paragraphs
+- **Headlines**: Great for hero sections and main headings
+- **Quotes**: Perfect for testimonials and featured quotes
+- **Stagger timing**: Use longer delays (0.1-0.2s) between words
+- **Reading rhythm**: Match the timing to natural reading pace
+
+## Props
+
+| Prop         | Type                  | Default     | Description                                     |
+| ------------ | --------------------- | ----------- | ----------------------------------------------- |
+| text         | string                | -           | Text to animate                                 |
+| animation    | AnimationType         | "fadeUp"    | Type of animation to apply                      |
+| by           | "character" \| "word" | "character" | **Set to "word" for word-by-word animation**    |
+| className    | string                | -           | Additional CSS classes                          |
+| delay        | number                | 0           | Initial delay before animation starts (seconds) |
+| duration     | number                | 0.5         | Duration of each word animation (seconds)       |
+| staggerDelay | number                | 0.03        | Delay between each word (seconds)               |
+| once         | boolean               | true        | Animate only once when in view                  |

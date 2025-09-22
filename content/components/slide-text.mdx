@@ -1,0 +1,111 @@
+---
+title: Slide Text 
+description: Dynamic slide animations for text with left and right motion effects
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SplitText from "@/components/showcase/split-text";
+
+import {
+  sourceTsx,
+  sourceJsx,
+  slideUsageTsx,
+  slideUsageJsx,
+} from "@/registry/text-animations/index.tsx";
+
+Slide animations create dynamic entrance effects with horizontal motion, perfect for creating engaging text reveals.
+
+### Slide Left
+
+Characters slide in from the right side with smooth horizontal motion.
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={200}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Slide left animation"
+        animation="slideLeft"
+        className="text-4xl font-bold"
+        staggerDelay={0.04}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: slideUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: slideUsageJsx },
+    ],
+  }}
+/>
+
+### Slide Right
+
+Characters slide in from the left side creating a reverse motion effect.
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={200}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Slide right animation"
+        animation="slideRight"
+        className="text-4xl font-bold"
+        staggerDelay={0.04}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: slideUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: slideUsageJsx },
+    ],
+  }}
+/>
+
+## Props
+
+| Prop         | Type                  | Default     | Description                                     |
+| ------------ | --------------------- | ----------- | ----------------------------------------------- |
+| text         | string                | -           | Text to animate                                 |
+| animation    | AnimationType         | "fadeUp"    | Type of animation to apply                      |
+| className    | string                | -           | Additional CSS classes                          |
+| delay        | number                | 0           | Initial delay before animation starts (seconds) |
+| duration     | number                | 0.5         | Duration of each character animation (seconds)  |
+| staggerDelay | number                | 0.03        | Delay between each character (seconds)          |
+| by           | "character" \| "word" | "character" | Split text by characters or words               |
+| once         | boolean               | true        | Animate only once when in view                  |

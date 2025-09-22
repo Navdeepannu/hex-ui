@@ -14,6 +14,9 @@ export const componentsSource = loader({
   source: components.toFumadocsSource(),
 });
 
+// Export both sources for use in search API
+// The search will handle combining results manually
+
 // Combined source for unified sidebar navigation
 export const unifiedSource = {
   // Combine both page trees with section headers
@@ -49,22 +52,27 @@ export const unifiedSource = {
     }
   },
 
-  // Proxy methods to the appropriate source based on URL
+  // Proxy methods to route to appropriate source based on context
   getPage(slug?: string[]) {
-    // If no slug or starts with docs-related paths, use docs source
+    // If no slug, return undefined
     if (!slug || slug.length === 0) {
-      return source.getPage(slug);
+      return undefined;
     }
 
-    // Route to appropriate source based on current path
-    if (
-      typeof window !== "undefined" &&
-      window.location.pathname.startsWith("/components")
-    ) {
-      return componentsSource.getPage(slug);
-    } else {
-      return source.getPage(slug);
+    // Check if it's a component page by looking at current context
+    // For server-side (search), try both sources
+    const componentPage = componentsSource.getPage(slug);
+    if (componentPage) {
+      return componentPage;
     }
+
+    // If not found in components, try docs source
+    const docsPage = source.getPage(slug);
+    if (docsPage) {
+      return docsPage;
+    }
+
+    return undefined;
   },
 
   generateParams() {

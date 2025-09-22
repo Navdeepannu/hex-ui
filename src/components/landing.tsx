@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Landing = () => {
   const logos = [
@@ -54,17 +55,17 @@ const Landing = () => {
       <div className="relative z-10 max-w-7xl">
         {/* Main heading animation */}
         <motion.h1
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1.2,
-            delay: 0.3,
-            ease: [0.16, 1, 0.3, 1],
+            duration: 0.6,
+            delay: 0.1,
+            ease: [0.21, 0.47, 0.32, 0.98],
           }}
-          className="mx-auto items-center bg-gradient-to-b from-neutral-700 via-neutral-800 to-neutral-800 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-neutral-100 dark:via-neutral-200/90 dark:to-neutral-300/90 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.15)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.2)]"
+          className="mx-auto items-center bg-gradient-to-b from-neutral-700 via-neutral-800 to-neutral-900 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-white dark:via-neutral-50 dark:to-neutral-200 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.2)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.25)]"
         >
           Beautiful components for{" "}
-          <span className="bg-gradient-to-b from-teal-500 via-emerald-500 to-[#62c08f] to-99% bg-clip-text text-transparent">
+          <span className="bg-gradient-to-b from-teal-500 via-emerald-500 to-green-600 bg-clip-text text-transparent dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-500">
             Modern{" "}
           </span>
           <span>Websites</span>
@@ -72,14 +73,14 @@ const Landing = () => {
 
         {/* Description animation */}
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1,
-            delay: 0.4,
-            ease: [0.16, 1, 0.3, 1],
+            duration: 0.5,
+            delay: 0.2,
+            ease: [0.21, 0.47, 0.32, 0.98],
           }}
-          className="text-muted-foreground mx-auto mt-6 max-w-3xl text-center text-xl leading-normal tracking-tight [text-shadow:0px_1px_3px_rgba(0,0,0,0.1)] lg:[text-shadow:0px_2px_4px_rgba(0,0,0,0.12)] dark:[text-shadow:0px_1px_3px_rgba(255,255,255,0.1)] lg:dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.12)]"
+          className="mx-auto mt-6 max-w-3xl text-center text-xl leading-normal tracking-tight text-neutral-600 [text-shadow:0px_1px_3px_rgba(0,0,0,0.08)] dark:text-neutral-300 dark:[text-shadow:0px_1px_3px_rgba(255,255,255,0.1)] lg:[text-shadow:0px_2px_4px_rgba(0,0,0,0.1)] lg:dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.12)]"
         >
           Collection of copy-and-paste components built with React, TypeScript,
           and Tailwind CSS. Create stunning UI with our carefully crafted
@@ -88,40 +89,40 @@ const Landing = () => {
 
         {/* Buttons animation */}
         <motion.div
-          initial={{ opacity: 0, y: 6 }}
+          initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.9,
-            delay: 0.5,
-            ease: [0.16, 1, 0.3, 1],
+            duration: 0.5,
+            delay: 0.3,
+            ease: [0.21, 0.47, 0.32, 0.98],
           }}
           className="mt-12 flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4"
         >
           <motion.div
-            initial={{ opacity: 0, x: -6 }}
+            initial={{ opacity: 0, x: -4 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              duration: 0.8,
-              delay: 0.8,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.4,
+              delay: 0.4,
+              ease: [0.21, 0.47, 0.32, 0.98],
             }}
           >
-            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] transition-transform duration-150 hover:bg-white hover:opacity-80 hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none dark:text-white">
-              <a href="/docs/introduction">Documentation</a>
+            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] transition-transform duration-150 hover:bg-white hover:opacity-80 hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none  dark:text-black">
+              <Link href="/docs/introduction">Documentation</Link>
             </button>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 6 }}
+            initial={{ opacity: 0, x: 4 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              duration: 0.8,
-              delay: 1,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.4,
+              delay: 0.5,
+              ease: [0.21, 0.47, 0.32, 0.98],
             }}
           >
             <button className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-b from-[#464d55] to-[#25292e] px-6 py-2 text-base text-white shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] transition duration-150 hover:opacity-90 hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none">
-              <a href="/components">Browse Components</a>
+              <Link href="/components/fade-text">Browse Components</Link>
             </button>
           </motion.div>
         </motion.div>
@@ -134,8 +135,8 @@ const Landing = () => {
             key={index}
             initial={{
               opacity: 0,
-              y: 6,
-              scale: 0.95,
+              y: 4,
+              scale: 0.96,
             }}
             animate={{
               opacity: 1,
@@ -143,13 +144,13 @@ const Landing = () => {
               scale: 1,
             }}
             transition={{
-              duration: 0.7,
-              delay: 0.6 + index * 0.08,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.4,
+              delay: 0.5 + index * 0.05,
+              ease: [0.21, 0.47, 0.32, 0.98],
             }}
-            className={`${logo.bgColor} group flex cursor-pointer items-center justify-center rounded-2xl p-2 shadow-md transition-shadow duration-300 hover:shadow-lg`}
+            className={`${logo.bgColor} group flex items-center justify-center rounded-2xl p-2 shadow-md transition-all duration-200 hover:shadow-lg hover:scale-105 dark:shadow-neutral-800/50 dark:hover:shadow-neutral-700/60`}
           >
-            <div className="ransition-transform">
+            <div className="transition-transform duration-200">
               {logo.component ? (
                 logo.component
               ) : (

@@ -15,9 +15,9 @@ const ShadcnLogo = () => {
         y2="208"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
       ></line>
       <line
         x1="192"
@@ -26,9 +26,9 @@ const ShadcnLogo = () => {
         y2="192"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="32"
       ></line>
     </svg>
   );

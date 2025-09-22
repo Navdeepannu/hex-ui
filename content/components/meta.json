@@ -1,4 +1,10 @@
 {
   "title": "Components",
-  "pages": ["button", "card"]
+  "pages": [
+    "fade-text",
+    "slide-text",
+    "transform-text",
+    "word-text",
+    "blur-text"
+  ]
 }

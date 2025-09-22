@@ -1,7 +1,7 @@
-import { source } from '@/lib/source';
-import { createFromSource } from 'fumadocs-core/search/server';
+import { source } from "@/lib/source";
+import { createFromSource } from "fumadocs-core/search/server";
 
+// Start with just docs search to test if text visibility works
 export const { GET } = createFromSource(source, {
-  // https://docs.orama.com/docs/orama-js/supported-languages
-  language: 'english',
+  language: "english",
 });

@@ -1,0 +1,111 @@
+---
+title: Transform Text
+description: Scale and rotate animations for dynamic text transformation effects
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SplitText from "@/components/showcase/split-text";
+
+import {
+  sourceTsx,
+  sourceJsx,
+  transformUsageTsx,
+  transformUsageJsx,
+} from "@/registry/text-animations/index.tsx";
+
+Transform animations add dynamic scaling and rotation effects to create engaging text reveals with dimensional changes.
+
+### Scale Animation
+
+Characters scale up from a smaller size creating a growing effect.
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={200}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Scale animation"
+        animation="scale"
+        className="text-4xl font-bold"
+        staggerDelay={0.06}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: transformUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: transformUsageJsx },
+    ],
+  }}
+/>
+
+### Rotate Animation
+
+Characters rotate into position creating a spinning entrance effect.
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={200}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Rotate animation"
+        animation="rotate"
+        className="text-4xl font-bold"
+        staggerDelay={0.05}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: transformUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: transformUsageJsx },
+    ],
+  }}
+/>
+
+## Props
+
+| Prop         | Type                  | Default     | Description                                     |
+| ------------ | --------------------- | ----------- | ----------------------------------------------- |
+| text         | string                | -           | Text to animate                                 |
+| animation    | AnimationType         | "fadeUp"    | Type of animation to apply                      |
+| className    | string                | -           | Additional CSS classes                          |
+| delay        | number                | 0           | Initial delay before animation starts (seconds) |
+| duration     | number                | 0.5         | Duration of each character animation (seconds)  |
+| staggerDelay | number                | 0.03        | Delay between each character (seconds)          |
+| by           | "character" \| "word" | "character" | Split text by characters or words               |
+| once         | boolean               | true        | Animate only once when in view                  |

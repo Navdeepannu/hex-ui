@@ -1,0 +1,106 @@
+---
+title: Fade Text
+description: Smooth fade up and fade down text animations with staggered timing
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SplitText from "@/components/showcase/split-text";
+
+import {
+  sourceTsx,
+  sourceJsx,
+  fadeUsageTsx,
+  fadeUsageJsx,
+} from "@/registry/text-animations/index.tsx";
+
+
+### Fade Up
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={400}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Fade up animation"
+        animation="fadeUp"
+        className="text-4xl font-bold"
+        staggerDelay={0.05}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: fadeUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: fadeUsageJsx },
+    ],
+  }}
+/>
+
+### Fade Down
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={400}
+  preview={
+    <div className="text-center py-8">
+      <SplitText
+        text="Fade down animation"
+        animation="fadeDown"
+        className="text-4xl font-bold"
+        staggerDelay={0.05}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "split-text.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "split-text.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      { language: "tsx", filename: "usage.tsx", code: fadeUsageTsx },
+      { language: "jsx", filename: "usage.jsx", code: fadeUsageJsx },
+    ],
+  }}
+/>
+
+## Props
+
+| Prop         | Type                  | Default     | Description                                     |
+| ------------ | --------------------- | ----------- | ----------------------------------------------- |
+| text         | string                | -           | Text to animate                                 |
+| animation    | AnimationType         | "fadeUp"    | Type of animation to apply                      |
+| className    | string                | -           | Additional CSS classes                          |
+| delay        | number                | 0           | Initial delay before animation starts (seconds) |
+| duration     | number                | 0.5         | Duration of each character animation (seconds)  |
+| staggerDelay | number                | 0.03        | Delay between each character (seconds)          |
+| by           | "character" \| "word" | "character" | Split text by characters or words               |
+| once         | boolean               | true        | Animate only once when in view                  |
