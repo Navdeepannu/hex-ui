@@ -1,0 +1,16 @@
+{
+  "functions": {
+    "app/**": {
+      "runtime": "@vercel/node@3.2.18"
+    }
+  },
+  "buildCommand": "bun run build",
+  "installCommand": "bun install",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/"
+    }
+  ]
+}
