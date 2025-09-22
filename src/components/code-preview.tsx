@@ -2,9 +2,7 @@
 
 import React from "react";
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 import {
   CodeBlock,
   CodeBlockBody,
@@ -23,7 +21,6 @@ import {
 } from "@/components/ui/kibo-ui/code-block";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { BundledLanguage } from "shiki";
-import { Code2, FileText, Maximize2 } from "lucide-react";
 
 import { IconCode, IconEye, IconSourceCode } from "@tabler/icons-react";
 // removed unused Tabler icon imports
@@ -61,9 +58,6 @@ export function CodePreview({
       ? `${codeHeight}px`
       : (codeHeight ?? "400px");
 
-  // Router for opening the preview page
-  const router = useRouter();
-
   // Determine default tab based on provided content
   const defaultTab = ((): "preview" | "source" | "code" => {
     if (
@@ -79,15 +73,6 @@ export function CodePreview({
   })();
 
   const contentWidthStyle: CSSProperties = { width: "100%" };
-
-  // extract component name from props
-  const { componentName } = props as unknown as { componentName?: string };
-
-  const openPreviewPage = () => {
-    if (componentName) {
-      router.push(`/preview/${componentName}`);
-    }
-  };
 
   return (
     <div

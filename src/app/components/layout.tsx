@@ -7,6 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <DocsLayout
       tabMode="sidebar"
       {...baseOptions()}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       tree={unifiedSource.pageTree as any}
     >
       {children}

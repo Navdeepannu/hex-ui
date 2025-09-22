@@ -30,14 +30,16 @@ export const unifiedSource = {
         name: "Documentation",
         children: [
           {
-            type: "separator",
+            type: "separator" as const,
             name: "Getting Started",
+            children: [],
           },
           // Spread docs pages
           ...(docsTree?.children || []),
           {
-            type: "separator",
+            type: "separator" as const,
             name: "Components",
+            children: [],
           },
           // Spread component pages
           ...(componentsTree?.children || []),
@@ -45,8 +47,8 @@ export const unifiedSource = {
       };
 
       return unifiedTree;
-    } catch (e) {
-      console.error("Error creating unified page tree:", e);
+    } catch (error) {
+      console.error("Error creating unified page tree:", error);
       // Fallback to docs tree
       return source.pageTree;
     }
@@ -80,7 +82,7 @@ export const unifiedSource = {
       const docsParams = source.generateParams() || [];
       const componentParams = componentsSource.generateParams() || [];
       return [...docsParams, ...componentParams];
-    } catch (e) {
+    } catch {
       return [];
     }
   },
