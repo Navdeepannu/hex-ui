@@ -22,8 +22,8 @@ import React, { useState } from "react";
 const packageManagers = [
   { value: "npx", label: "npm" },
   { value: "bunx --bun", label: "bun" },
-  { value: "pnpm", label: "pnpm" },
-  { value: "yarn", label: "yarn" },
+  { value: "pnpm dlx", label: "pnpm" },
+  { value: "yarn dlx", label: "yarn" },
 ];
 
 const getCommands = (packageManager: string, componentName: string) => [
@@ -71,7 +71,7 @@ const SnippetBlock = ({ componentName }: SnippetBlockProps) => {
         </SnippetTabsList>
         <div className="flex items-center gap-2">
           <Select value={packageManager} onValueChange={setPackageManager}>
-            <SelectTrigger className="w-[80px] h-8">
+            <SelectTrigger className="min-w-[80px]  h-8">
               <SelectValue placeholder="Package Manager" />
             </SelectTrigger>
             <SelectContent>
