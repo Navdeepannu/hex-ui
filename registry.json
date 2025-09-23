@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "hex-ui",
+  "homepage": "http://localhost:3000",
+  "items": [
+    {
+      "name": "split-text",
+      "type": "registry:component",
+      "description": "Animated text component with character and word-level animations",
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/split-text/split-text.tsx",
+          "type": "registry:component",
+          "target": "components/ui/split-text.tsx"
+        }
+      ]
+    }
+  ]
+}

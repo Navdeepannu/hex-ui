@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-text",
+  "type": "registry:component",
+  "description": "Animated text component with character and word-level animations",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/split-text/split-text.tsx",
+      "content": "\"use client\";\nimport { cn } from \"@/lib/utils\";\nimport { motion, Variants } from \"motion/react\";\nimport React from \"react\";\n\ntype AnimationType =\n  | \"fadeUp\"\n  | \"fadeDown\"\n  | \"slideLeft\"\n  | \"slideRight\"\n  | \"scale\"\n  | \"rotate\"\n  | \"blur\";\n\ninterface SplitTextProps {\n  text: string;\n  className?: string;\n  animation?: AnimationType;\n  delay?: number;\n  duration?: number;\n  staggerDelay?: number;\n  by?: \"character\" | \"word\";\n  once?: boolean;\n}\n\nconst SplitText: React.FC<SplitTextProps> = ({\n  text,\n  className,\n  animation = \"fadeUp\",\n  delay = 0,\n  duration = 0.5,\n  staggerDelay = 0.03,\n  by = \"character\",\n  once = true,\n}) => {\n  // Animation variants\n  const animations: Record<AnimationType, Variants> = {\n    fadeUp: {\n      hidden: { opacity: 0, y: 20 },\n      visible: { opacity: 1, y: 0 },\n    },\n    fadeDown: {\n      hidden: { opacity: 0, y: -20 },\n      visible: { opacity: 1, y: 0 },\n    },\n    slideLeft: {\n      hidden: { opacity: 0, x: 20 },\n      visible: { opacity: 1, x: 0 },\n    },\n    slideRight: {\n      hidden: { opacity: 0, x: -20 },\n      visible: { opacity: 1, x: 0 },\n    },\n    scale: {\n      hidden: { opacity: 0, scale: 0.8 },\n      visible: { opacity: 1, scale: 1 },\n    },\n    rotate: {\n      hidden: { opacity: 0, rotate: -10 },\n      visible: { opacity: 1, rotate: 0 },\n    },\n    blur: {\n      hidden: { opacity: 0, filter: \"blur(4px)\" },\n      visible: { opacity: 1, filter: \"blur(0px)\" },\n    },\n  };\n\n  // child animations\n  const containerVariants: Variants = {\n    hidden: {},\n    visible: {\n      transition: {\n        delayChildren: delay,\n        staggerChildren: staggerDelay,\n      },\n    },\n  };\n\n  // Split text by character or word\n  const splitText = by === \"character\" ? text.split(\"\") : text.split(\" \");\n\n  return (\n    <motion.div\n      className={cn(\n        \"inline-flex\",\n        by === \"word\" ? \"flex-wrap gap-x-2\" : \"\",\n        className\n      )}\n      initial=\"hidden\"\n      animate=\"visible\"\n      variants={containerVariants}\n      viewport={{ once }}\n    >\n      {splitText.map((char, index) => (\n        <motion.span\n          key={index}\n          variants={animations[animation]}\n          transition={{\n            duration,\n            ease: \"easeOut\",\n          }}\n          className={cn(\n            \"inline-block\",\n            by === \"character\" && char === \" \" ? \"w-2\" : \"\",\n            by === \"word\" ? \"whitespace-nowrap\" : \"\"\n          )}\n        >\n          {by === \"character\" && char === \" \" ? \"\\u00A0\" : char}\n        </motion.span>\n      ))}\n    </motion.div>\n  );\n};\n\n// Pre-configured variants\n// Common Use Cases\nexport const SplitTextFadeUp: React.FC<Omit<SplitTextProps, \"animation\">> = (\n  props\n) => <SplitText {...props} animation=\"fadeUp\" />;\n\nexport const SplitTextSlideIn: React.FC<Omit<SplitTextProps, \"animation\">> = (\n  props\n) => <SplitText {...props} animation=\"slideLeft\" />;\n\nexport const SplitTextScale: React.FC<Omit<SplitTextProps, \"animation\">> = (\n  props\n) => <SplitText {...props} animation=\"scale\" />;\n\nexport const SplitTextWords: React.FC<Omit<SplitTextProps, \"by\">> = (props) => (\n  <SplitText {...props} by=\"word\" />\n);\n\nexport default SplitText;\n",
+      "type": "registry:component",
+      "target": "components/ui/split-text.tsx"
+    }
+  ]
+}

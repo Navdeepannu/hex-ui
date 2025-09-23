@@ -9,9 +9,9 @@ import SplitText from "@/components/showcase/split-text";
 import {
   sourceTsx,
   sourceJsx,
-  transformUsageTsx,
   transformUsageJsx,
-} from "@/registry/text-animations/index.tsx";
+  transformUsageTsx,
+} from "@/components/source-code/text-animations/index";
 
 Transform animations add dynamic scaling and rotation effects to create engaging text reveals with dimensional changes.
 
@@ -21,7 +21,7 @@ Characters scale up from a smaller size creating a growing effect.
 
 <CodePreview
   initialTab="preview"
-  codeHeight={200}
+  codeHeight={420}
   preview={
     <div className="text-center py-8">
       <SplitText

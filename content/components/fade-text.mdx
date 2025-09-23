@@ -4,21 +4,21 @@ description: Smooth fade up and fade down text animations with staggered timing
 ---
 
 import { CodePreview } from "@/components/code-preview";
-import SplitText from "@/components/showcase/split-text";
+import SnippetBlock from "@/components/ui/kibo-ui/snippet/snippet-demo";
+import SplitText from "@/components/showcase/split-text.tsx";
 
 import {
   sourceTsx,
   sourceJsx,
   fadeUsageTsx,
   fadeUsageJsx,
-} from "@/registry/text-animations/index.tsx";
-
+} from "@/components/source-code/text-animations/index";
 
 ### Fade Up
 
 <CodePreview
   initialTab="preview"
-  codeHeight={400}
+  codeHeight={420}
   preview={
     <div className="text-center py-8">
       <SplitText
@@ -91,6 +91,10 @@ import {
     ],
   }}
 />
+
+## Installation
+
+<SnippetBlock componentName="split-text" />
 
 ## Props
 
