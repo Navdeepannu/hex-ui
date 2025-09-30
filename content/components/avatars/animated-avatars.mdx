@@ -1,0 +1,131 @@
+---
+title: Animated Avatars
+description: Interactive avatar component with tooltips and smooth hover animations
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SnippetBlock from "@/components/ui/kibo-ui/snippet/snippet-demo";
+import { AnimatedAvatar } from "@/components/showcase/animated-avatars";
+import {
+  sourceJsx,
+  sourceTsx,
+} from "@/components/source-code/animated-avatar/index.tsx";
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="flex items-center justify-center py-12">
+      <AnimatedAvatar
+        items={[
+          {
+            id: 1,
+            name: "John Doe",
+            designation: "Developer",
+            image: "https://images.unsplash.com/photo-1654110455429-cf322b40a906?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          },
+          {
+            id: 2,
+            name: "Alex",
+            designation: "Designer",
+            image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          },
+          {
+            id: 3,
+            name: "Maya Patel",
+            designation: "UI/UX",
+            image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
+          },
+          {
+            id: 4,
+            name: "David Kim",
+            designation: "Product Manager",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80",
+          },
+          {
+            id: 5,
+            name: "Lisa",
+            designation: "Director",
+            image: "https://images.unsplash.com/photo-1640951613773-54706e06851d?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          },
+        ]}
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+     data: [
+      {
+        language: "tsx",
+        filename: "animated-avatar.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "animated-avatar.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "usage.tsx",
+        code: `import { AnimatedAvatar } from "@/components/showcase/animated-avatars";
+
+const people = [
+{
+id: 1,
+name: "John Doe",
+designation: "Developer",
+image: "/avatars/john.jpg",
+},
+{
+id: 2,
+name: "Jane Smith",
+designation: "Designer",
+image: "/avatars/jane.jpg",
+},
+// Add more people...
+];
+
+export default function AnimatedAvatarExample() {
+  return (
+    <div className="flex justify-center">
+      <AnimatedAvatar items={people} />
+    </div>
+  );
+}`,
+      },
+    ],
+  }}
+/>
+
+## Installation
+
+<SnippetBlock
+  packageManagers="bun pnpm npm yarn"
+  componentName="animated-avatar"
+/>
+
+## Props
+
+| Prop        | Type           | Description             |
+| ----------- | -------------- | ----------------------- |
+| `items`     | `AvatarItem[]` | Array of avatar objects |
+| `className` | `string`       | Additional CSS classes  |
+
+### AvatarItem
+
+| Property      | Type     | Description       |
+| ------------- | -------- | ----------------- |
+| `id`          | `number` | Unique identifier |
+| `name`        | `string` | Person's name     |
+| `designation` | `string` | Job title or role |
+| `image`       | `string` | Avatar image URL  |
+
+Perfect for team pages, contributor showcases, or any interface where you want to display people in an elegant, interactive way.
+
+<br />

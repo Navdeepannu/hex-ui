@@ -1,5 +1,14 @@
-import { IconBrandX, IconHexagons } from "@tabler/icons-react";
+import {
+  IconBrandX,
+  IconHexagon,
+  IconHexagonFilled,
+  IconHexagonLetterE,
+  IconHexagonLetterH,
+  IconHexagonLetterHFilled,
+  IconHexagonLetterX,
+} from "@tabler/icons-react";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { LogoCompact } from "@/components/ui/logo";
 /**
  * Shared layout configurations
  *
@@ -12,10 +21,10 @@ export function baseOptions(): BaseLayoutProps {
     githubUrl: "https://github.com/navdeepannu",
     nav: {
       title: (
-        <>
-          <IconHexagons />
-          Hex UI
-        </>
+        <div className="flex items-center gap-2">
+          <LogoCompact size={24} />
+          <span className="font-semibold">Hex UI</span>
+        </div>
       ),
       url: "/",
     },

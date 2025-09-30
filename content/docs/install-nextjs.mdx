@@ -1,13 +1,90 @@
 ---
-title: Install nextjs
-description: Simply install nextjs project to get started
+title: Install Next.js
+description: Set up a new Next.js project for Hex UI components
 ---
 
-Welcome to Hex-ui, inspired name from hexagons because they are cool.
+# Install Next.js
 
-## How to use the components
+Get started by creating a new Next.js project. Hex UI components work best with Next.js 14+ and the App Router.
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+## Create Project
+
+Use the Next.js CLI to create a new project:
+
+```bash
+npx create-next-app@latest my-app
+```
+
+When prompted, configure your project:
+
+```bash
+✔ Would you like to use TypeScript? … Yes
+✔ Would you like to use ESLint? … Yes
+✔ Would you like to use Tailwind CSS? … Yes
+✔ Would you like to use `src/` directory? … Yes
+✔ Would you like to use App Router? … Yes
+✔ Would you like to customize the default import alias (@/*)? … Yes
+```
+
+## Navigate to Project
+
+```bash
+cd my-app
+```
+
+## Install Dependencies
+
+Install the required dependencies for Hex UI components:
+
+```bash
+npm install framer-motion clsx tailwind-merge class-variance-authority
+```
+
+## Project Structure
+
+Your project should look like this:
+
+```
+my-app/
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   └── lib/
+├── public/
+├── next.config.js
+├── package.json
+├── tailwind.config.js
+└── tsconfig.json
+```
+
+## Configure Components
+
+Create a `components.json` file in your project root:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+## Next Steps
+
+- [Install Tailwind CSS](/docs/install-tailwindcss) - Configure Tailwind CSS v4
+- [Browse Components](/components) - Explore available components
+- [Registry Setup](/docs/registry) - Learn about component installation

@@ -1,6 +1,114 @@
 ---
-title: Registry Shadcn
-description: Simply shadcn syntax cli
+title: Registry
+description: Learn how to install and use Hex UI components via the shadcn registry
 ---
 
-here is the cli
+# Component Registry
+
+Hex UI uses the shadcn CLI system for easy component installation. Components are distributed through our registry and can be installed directly into your project.
+
+## Installation
+
+Install components using the shadcn CLI with our registry URL:
+
+```bash
+npx shadcn@latest add https://hex-ui.vercel.app/r/component-name.json
+```
+
+## Available Package Managers
+
+The registry supports multiple package managers:
+
+```bash
+# npm (default)
+npx shadcn@latest add https://hex-ui.vercel.app/r/split-text.json
+
+# bun
+bunx --bun shadcn@latest add https://hex-ui.vercel.app/r/split-text.json
+
+# pnpm
+pnpm dlx shadcn@latest add https://hex-ui.vercel.app/r/split-text.json
+
+# yarn
+yarn dlx shadcn@latest add https://hex-ui.vercel.app/r/split-text.json
+```
+
+## Component Structure
+
+When you install a component, it will be added to your project with:
+
+- **Component file**: Added to `src/components/ui/`
+- **Dependencies**: Automatically installed via package manager
+- **Types**: Full TypeScript support included
+
+## Example Installation
+
+Install the split-text animation component:
+
+```bash
+npx shadcn@latest add https://hex-ui.vercel.app/r/split-text.json
+```
+
+This will:
+
+1. Install required dependencies (`motion`)
+2. Add the component to `src/components/ui/split-text.tsx`
+3. Set up all necessary imports and types
+
+## Usage After Installation
+
+Once installed, import and use the component:
+
+```tsx
+import { SplitText } from "@/components/ui/split-text";
+
+export default function MyPage() {
+  return (
+    <div>
+      <SplitText
+        text="Hello World"
+        animation="fadeUp"
+        className="text-4xl font-bold"
+      />
+    </div>
+  );
+}
+```
+
+## Available Components
+
+Browse all available components in our [component library](/components) where you'll find:
+
+- **Live previews** of each component
+- **Installation commands** for each component
+- **Source code** and usage examples
+- **Customization options** and props
+
+## Registry Configuration
+
+If you need to configure the registry manually, add this to your `components.json`:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/app/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+## Next Steps
+
+- [Browse Components](/components) - See all available components
+- [Text Animations](/components/fade-text) - Start with text animations
+- [GitHub Repository](https://github.com/your-username/hex-ui) - View source code

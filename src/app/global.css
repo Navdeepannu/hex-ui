@@ -9,6 +9,24 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --animate-cell-ripple: cell-ripple var(--duration, 150ms) ease-out none 1
+    var(--delay, 0ms);
+
+  @keyframes cell-ripple {
+    0% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+  }
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -113,6 +131,17 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
+  .mask-radial-fade {
+    mask: radial-gradient(circle at center, black 30%, transparent 70%);
+    -webkit-mask: radial-gradient(circle at center, black 30%, transparent 70%);
+  }
 }
 
 @layer base {

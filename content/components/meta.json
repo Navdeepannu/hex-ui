@@ -1,10 +1,4 @@
 {
   "title": "Components",
-  "pages": [
-    "fade-text",
-    "slide-text",
-    "transform-text",
-    "word-text",
-    "blur-text"
-  ]
+  "pages": ["animated-text", "avatars"]
 }

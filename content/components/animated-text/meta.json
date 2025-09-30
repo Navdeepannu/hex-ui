@@ -1,0 +1,12 @@
+{
+  "title": "Animated Text",
+  "description": "Text animation components with smooth transitions and effects",
+  "defaultOpen": true,
+  "pages": [
+    "fade-text",
+    "slide-text",
+    "transform-text",
+    "word-text",
+    "blur-text"
+  ]
+}

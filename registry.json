@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "hex-ui",
-  "homepage": "http://localhost:3000",
+  "homepage": "https://hex-ui.vercel.app",
   "items": [
     {
       "name": "split-text",
@@ -14,6 +14,20 @@
           "path": "registry/split-text/split-text.tsx",
           "type": "registry:component",
           "target": "components/ui/split-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-avatar",
+      "type": "registry:component",
+      "description": "Interactive avatar component with glassmorphism tooltips and hover animations",
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/animated-avatar/animated-avatar.tsx",
+          "type": "registry:component",
+          "target": "components/ui/animated-avatar.tsx"
         }
       ]
     }
