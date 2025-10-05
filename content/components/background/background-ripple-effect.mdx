@@ -1,0 +1,110 @@
+---
+title: Background Ripple Effect
+description: Hexagon Shapes background with Ripple effect on click.
+---
+
+<small>
+  Credits to [**_Animate
+  UI_**](https://animate-ui.com/docs/components/backgrounds/hexagon) •
+  [**Aceternity
+  UI**](https://ui.aceternity.com/components/background-ripple-effect) for
+  inspiration
+</small>
+
+import { CodePreview } from "@/components/code-preview";
+import SnippetBlock from "@/components/ui/kibo-ui/snippet/snippet-demo";
+import { HexagonBackground } from "@/components/showcase/hexagon-background.tsx";
+
+import {
+  sourceJsx,
+  sourceTsx,
+} from "@/components/source-code/backgrounds/ripple-effect.tsx";
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="relative h-full w-full overflow-hidden">
+      <HexagonBackground
+        interactive={true}
+        className="absolute inset-0"
+        hexagonProps={{
+          className:
+            "hover:before:bg-[#cde0fe]/20 dark:hover:before:bg-[#cde0fe]/10 transition-all duration-500",
+        }}
+      />
+      {/* Faded mask */}
+      <div className="via-background/30 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent" />
+      <div className="from-background via-background/80 pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r to-transparent" />
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l to-transparent" />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="space-y-4 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Interactive Hexagon Background with Ripple effect
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300">
+            Click anywhere to see the ripple effect
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+source={{
+    defaultValue: "tsx",
+     data: [
+      {
+        language: "tsx",
+        filename: "background-ripple-effect.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "background-ripple-effect.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        code: `import { HexagonBackground } from "@/components/ui/background-ripple-effect";
+
+export default function BackgroundDemo() {
+  return (
+      <div className="absolute top-0 right-0 left-0 h-[65vh] overflow-hidden">
+        <HexagonBackground interactive={true} className="absolute inset-0" />
+      
+        {/* Faded mask for blur*/}
+        <div className="via-background/30 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent" />
+        <div className="from-background via-background/80 pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r to-transparent" />
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l to-transparent" />
+      </div>
+  );
+}
+`,
+      },
+    ],
+  }}
+/>
+
+## Installation
+
+<SnippetBlock
+  packageManagers="bun pnpm npm yarn"
+  componentName="hexagon-background"
+/>
+
+
+### Props
+
+| Prop            | Type        | Default | Description                           |
+| --------------- | ----------- | ------- | ------------------------------------- |
+| `hexagonSize`   | `number`    | `75`    | Size of individual hexagons in pixels |
+| `hexagonMargin` | `number`    | `3`     | Spacing between hexagons              |
+| `interactive`   | `boolean`   | `false` | Enable ripple effect on click         |
+| `className`     | `string`    | -       | Additional CSS classes                |
+| `children`      | `ReactNode` | -       | Content to render over the background |

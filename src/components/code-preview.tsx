@@ -22,8 +22,15 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { BundledLanguage } from "shiki";
 
-import { IconCode, IconEye, IconSourceCode } from "@tabler/icons-react";
-// removed unused Tabler icon imports
+import {
+  IconCode,
+  IconEye,
+  IconSourceCode,
+  IconRefresh,
+  IconExternalLink,
+  IconReload,
+} from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
 type BlockConfig = {
   data: CodeBlockData[];
   defaultValue?: string; // language key matching CodeBlockData.language
@@ -51,12 +58,38 @@ export function CodePreview({
   codeHeight,
   ...props
 }: CodePreviewProps) {
+  const [reloadKey, setReloadKey] = React.useState(0);
+
   const showSource = Boolean(source?.data?.length);
   const showCode = Boolean(code?.data?.length);
   const viewportHeight =
     typeof codeHeight === "number"
       ? `${codeHeight}px`
       : (codeHeight ?? "400px");
+
+  // Function to handle preview reload
+  const handleReload = () => {
+    setReloadKey((prev) => prev + 1);
+  };
+
+  // Function to handle v0 opening
+  const handleOpenInV0 = () => {
+    // Get the first code block content for v0
+    const rawCode = code?.data?.[0]?.code || source?.data?.[0]?.code || "";
+
+    // Format the code for v0 - ensure it's a complete, renderable component
+    const formattedPrompt = `Create this React component:
+
+\`\`\`tsx
+${rawCode}
+\`\`\`
+
+Please render this component and show me the preview.`;
+
+    // Create v0 URL with the formatted prompt
+    const v0Url = `https://v0.dev/chat?q=${encodeURIComponent(formattedPrompt)}`;
+    window.open(v0Url, "_blank");
+  };
 
   // Determine default tab based on provided content
   const defaultTab = ((): "preview" | "source" | "code" => {
@@ -106,9 +139,38 @@ export function CodePreview({
 
         {preview && (
           <TabsContent value="preview">
-            <div style={{ height: viewportHeight }}>
-              <div className="bg-background flex h-full w-full items-center justify-center rounded-b-lg">
-                {preview}
+            <div style={{ height: viewportHeight }} className="relative">
+              {/* Action buttons positioned at top-right inside preview */}
+              <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleReload}
+                  className="h-8 cursor-pointer px-2 text-xs shadow-md"
+                  title="Reload preview"
+                >
+                  <IconReload className="size-4" />
+                </Button>
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={handleOpenInV0}
+                  className="h-8 px-2 text-xs shadow-md"
+                  title="Open in v0"
+                >
+                  Open in v0
+                  <IconExternalLink className="ml-1 h-3 w-3" />
+                </Button>
+              </div>
+
+              {/* Preview content - centered */}
+              <div className="bg-background relative flex h-full w-full items-center justify-center rounded-b-lg">
+                <div
+                  key={reloadKey}
+                  className="flex h-full w-full items-center justify-center"
+                >
+                  {preview}
+                </div>
               </div>
             </div>
           </TabsContent>

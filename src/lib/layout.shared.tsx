@@ -12,6 +12,7 @@ export function baseOptions(): BaseLayoutProps {
   return {
     githubUrl: "https://github.com/navdeepannu",
     nav: {
+      transparentMode: "top",
       title: (
         <div className="flex gap-1">
           <LogoHexagon size={30} />
@@ -33,16 +34,10 @@ export function baseOptions(): BaseLayoutProps {
         active: "nested-url",
       },
       {
-        text: "Templates",
-        url: "/templates",
-        active: "nested-url",
-      },
-      {
         icon: <IconBrandX />,
         type: "icon",
         url: "/twitter",
         text: "X",
-        secondary: true,
       },
     ],
   };

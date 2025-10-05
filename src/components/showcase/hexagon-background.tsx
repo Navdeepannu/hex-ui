@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 type HexagonBackgroundProps = React.ComponentProps<"div"> & {
   hexagonProps?: React.ComponentProps<"div">;
-  hexagonSize?: number; // value greater than 50
+  hexagonSize?: number;
   hexagonMargin?: number;
-  interactive?: boolean; // Enable ripple effect on click
+  interactive?: boolean;
 };
 
 function HexagonBackground({
@@ -26,6 +26,12 @@ function HexagonBackground({
   const computedMarginTop = baseMarginTop + hexagonMargin;
   const oddRowMarginLeft = -(hexagonSize / 2);
   const evenRowMarginLeft = hexagonMargin / 2;
+
+  const defaultHexagonProps = {
+    className:
+      "hover:before:bg-[#cde0fe]/20 dark:hover:before:bg-[#cde0fe]/10 transition-all duration-500",
+    ...hexagonProps,
+  };
 
   const [gridDimensions, setGridDimensions] = React.useState({
     rows: 0,
@@ -52,7 +58,7 @@ function HexagonBackground({
         setRippleKey((k) => k + 1);
       }
     },
-    [interactive]
+    [interactive],
   );
 
   React.useEffect(() => {
@@ -65,8 +71,8 @@ function HexagonBackground({
     <div
       data-slot="hexagon-background"
       className={cn(
-        "relative size-full overflow-hidden dark:bg-neutral-900 bg-neutral-100",
-        className
+        "relative size-full overflow-hidden bg-neutral-100 dark:bg-neutral-900",
+        className,
       )}
       {...props}
     >
@@ -86,15 +92,14 @@ function HexagonBackground({
           >
             {Array.from({ length: gridDimensions.columns }).map(
               (_, colIndex) => {
-                // Calculate ripple effect properties
                 const distance = clickedHexagon
                   ? Math.hypot(
                       clickedHexagon.row - rowIndex,
-                      clickedHexagon.col - colIndex
+                      clickedHexagon.col - colIndex,
                     )
                   : 0;
-                const delay = clickedHexagon ? Math.max(0, distance * 35) : 0; // Reduced from 55ms to 35ms
-                const duration = 150 + distance * 50; // Reduced from 200 + 80ms to 150 + 50ms
+                const delay = clickedHexagon ? Math.max(0, distance * 55) : 0;
+                const duration = 150 + distance * 50;
 
                 const rippleStyle = clickedHexagon
                   ? ({
@@ -106,13 +111,13 @@ function HexagonBackground({
                 return (
                   <div
                     key={`hexagon-${rowIndex}-${colIndex}`}
-                    {...hexagonProps}
+                    {...defaultHexagonProps}
                     style={{
                       width: hexagonWidth,
                       height: hexagonHeight,
                       marginLeft: hexagonMargin,
                       ...rippleStyle,
-                      ...hexagonProps?.style,
+                      ...defaultHexagonProps?.style,
                     }}
                     onClick={
                       interactive
@@ -121,21 +126,21 @@ function HexagonBackground({
                     }
                     className={cn(
                       "relative transition-all duration-150",
-                      "[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)] ",
-                      "before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full dark:before:bg-neutral-950 before:bg-white before:opacity-100 before:transition-all before:duration-300",
-                      "after:content-[''] after:absolute after:inset-[var(--hexagon-margin)] dark:after:bg-neutral-950 after:bg-white after:transition-none",
+                      "[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]",
+                      "before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-white before:opacity-100 before:transition-all before:duration-300 before:content-[''] dark:before:bg-neutral-950",
+                      "after:absolute after:inset-[var(--hexagon-margin)] after:bg-white after:transition-none after:content-[''] dark:after:bg-neutral-950",
                       "after:[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]",
-                      "hover:before:bg-neutral-500 dark:hover:before:bg-neutral-800 hover:before:opacity-100 hover:before:duration-0 dark:hover:after:bg-neutral-900 hover:after:bg-neutral-100 hover:after:opacity-100 hover:after:duration-0",
+                      "hover:before:bg-neutral-500 hover:before:opacity-100 hover:before:duration-0 hover:after:bg-neutral-100 hover:after:opacity-100 hover:after:duration-0 dark:hover:before:bg-neutral-800 dark:hover:after:bg-neutral-900",
                       clickedHexagon &&
                         interactive &&
                         "before:animate-cell-ripple before:[animation-fill-mode:none]",
                       interactive && "cursor-pointer",
                       !interactive && "pointer-events-none",
-                      hexagonProps?.className
+                      defaultHexagonProps?.className,
                     )}
                   />
                 );
-              }
+              },
             )}
           </div>
         ))}

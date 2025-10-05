@@ -95,20 +95,13 @@ const Landing = () => {
   return (
     <div className="flex min-h-[80vh] w-full flex-col items-center justify-center">
       {/* Hexagon background - constrained to header area only */}
-      <div className="absolute top-0 left-0 right-0 h-[65vh] overflow-hidden">
-        <HexagonBackground
-          interactive={true}
-          className="absolute inset-0 opacity-80 dark:opacity-100"
-          hexagonProps={{
-            className:
-              "hover:before:bg-[#cde0fe]/20 dark:hover:before:bg-[#cde0fe]/10 transition-all duration-500",
-          }}
-        />
+      <div className="absolute top-0 right-0 left-0 h-[65vh] overflow-hidden">
+        <HexagonBackground interactive={true} className="absolute inset-0" />
         {/* Enhanced faded mask with subtle blue tint */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+        <div className="via-background/30 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent" />
+        <div className="from-background via-background/80 pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r to-transparent" />
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl">
@@ -121,7 +114,7 @@ const Landing = () => {
             delay: 0.1,
             ease: [0.21, 0.47, 0.32, 0.98],
           }}
-          className="mx-auto  items-center bg-gradient-to-b from-neutral-700 via-neutral-800 to-neutral-900 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-white dark:via-neutral-50 dark:to-neutral-200 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.2)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.25)]"
+          className="mx-auto items-center bg-gradient-to-b from-neutral-700 via-neutral-800 to-neutral-900 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-white dark:via-neutral-50 dark:to-neutral-200 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.2)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.25)]"
         >
           Build websites{" "}
           <span className="bg-gradient-to-r from-[#cde0fe] via-[#b8d4ff] to-[#a3c7ff] bg-clip-text text-transparent text-shadow-2xs">
@@ -139,7 +132,7 @@ const Landing = () => {
             delay: 0.2,
             ease: [0.21, 0.47, 0.32, 0.98],
           }}
-          className="mx-auto mt-6 max-w-3xl text-center text-xl leading-normal tracking-tight text-neutral-600 [text-shadow:0px_1px_3px_rgba(0,0,0,0.08)] dark:text-neutral-300 dark:[text-shadow:0px_1px_3px_rgba(255,255,255,0.1)] lg:[text-shadow:0px_2px_4px_rgba(0,0,0,0.1)] lg:dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.12)]"
+          className="mx-auto mt-6 max-w-3xl text-center text-xl leading-normal tracking-tight text-neutral-600 [text-shadow:0px_1px_3px_rgba(0,0,0,0.08)] lg:[text-shadow:0px_2px_4px_rgba(0,0,0,0.1)] dark:text-neutral-300 dark:[text-shadow:0px_1px_3px_rgba(255,255,255,0.1)] lg:dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.12)]"
         >
           Discover a collection of beautifully crafted React components with
           smooth animations. Create stunning UI with our carefully crafted
@@ -166,7 +159,7 @@ const Landing = () => {
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
           >
-            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] transition-transform duration-150 hover:bg-white hover:opacity-80 hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none  dark:text-black">
+            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] transition-transform duration-150 hover:bg-white hover:opacity-80 hover:shadow-[rgba(0,_1,_0,_.2)_0_2px_8px] active:outline-none dark:text-black">
               <Link href="/docs/introduction">Documentation</Link>
             </button>
           </motion.div>
@@ -188,7 +181,7 @@ const Landing = () => {
       </div>
 
       {/* Logo animation */}
-      <div className="mt-10 z-100 flex flex-wrap items-center justify-center gap-8 md:gap-4 lg:gap-10">
+      <div className="z-100 mt-10 flex flex-wrap items-center justify-center gap-8 md:gap-4 lg:gap-10">
         {logos.map((logo, index) => (
           <motion.div
             key={index}
