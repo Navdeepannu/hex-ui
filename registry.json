@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "hex-ui",
-  "homepage": "https://hex-ui.vercel.app",
+  "homepage": "https://hex-ui.com",
   "items": [
     {
       "name": "utils",
