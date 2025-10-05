@@ -26,7 +26,6 @@ import {
   IconCode,
   IconEye,
   IconSourceCode,
-  IconRefresh,
   IconExternalLink,
   IconReload,
 } from "@tabler/icons-react";

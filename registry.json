@@ -4,6 +4,19 @@
   "homepage": "https://hex-ui.vercel.app",
   "items": [
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "Utility functions for merging Tailwind CSS classes",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
       "name": "split-text",
       "type": "registry:component",
       "description": "Animated text component with character and word-level animations",
@@ -41,6 +54,19 @@
           "path": "registry/navbars/pill-navbar.tsx",
           "type": "registry:component",
           "target": "components/ui/pill-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "background-ripple-effect",
+      "type": "registry:component",
+      "description": "Hexagon Shapes background with Ripple effect on click.",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/backgrounds/background-ripple-effect.tsx",
+          "type": "registry:component",
+          "target": "components/ui/background-ripple-effect.tsx"
         }
       ]
     }
