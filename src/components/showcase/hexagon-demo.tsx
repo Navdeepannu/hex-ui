@@ -27,7 +27,6 @@ type HexagonProps = React.ComponentProps<"div"> & {
 
 function Hexagon({
   size = 100,
-  margin = 3,
   className,
   style,
   socialMedia,
@@ -51,15 +50,15 @@ function Hexagon({
         ...style,
       }}
       className={cn(
-        "relative transition-all duration-300 group overflow-visible drop-shadow-lg hover:drop-shadow-2xl",
-        "hover:scale-105 hover:z-50 z-10",
+        "group relative overflow-visible drop-shadow-lg transition-all duration-300 hover:drop-shadow-2xl",
+        "z-10 hover:z-50 hover:scale-105",
         "transform-gpu",
-        "[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)] ",
-        "before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full",
+        "[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]",
+        "before:absolute before:top-0 before:left-0 before:h-full before:w-full before:content-['']",
         "before:bg-gradient-to-br before:from-neutral-700/80 before:to-neutral-800/90",
         "dark:before:bg-gradient-to-br dark:before:from-neutral-800/80 dark:before:to-neutral-900/90",
         "before:opacity-100 before:transition-all before:duration-300",
-        "after:content-[''] after:absolute after:inset-[2px]",
+        "after:absolute after:inset-[2px] after:content-['']",
         "after:bg-gradient-to-br after:from-neutral-900/95 after:to-black/95",
         "dark:after:bg-gradient-to-br dark:after:from-neutral-900/95 dark:after:to-black",
         "after:transition-all after:duration-300",
@@ -68,8 +67,8 @@ function Hexagon({
         "dark:hover:before:from-neutral-700/90 dark:hover:before:to-neutral-800/95",
         "hover:after:from-neutral-800/98 hover:after:to-neutral-900/98",
         "dark:hover:after:from-neutral-800/98 dark:hover:after:to-black/98",
-        socialMedia && "cursor-pointer ",
-        className
+        socialMedia && "cursor-pointer",
+        className,
       )}
       onClick={handleClick}
       onMouseEnter={() => setShowTooltip(true)}
@@ -78,11 +77,11 @@ function Hexagon({
       {socialMedia && (
         <div
           className={cn(
-            "absolute inset-0 flex items-center justify-center z-10 rounded-full"
+            "absolute inset-0 z-10 flex items-center justify-center rounded-full",
           )}
         >
-          <div className="text-neutral-400 relative dark:text-neutral-400 group-hover:text-white dark:group-hover:text-white transition-all duration-300 gap-3 flex flex-col items-center justify-center drop-shadow-sm group-hover:drop-shadow-md">
-            <div className=" transition-transform duration-300">
+          <div className="relative flex flex-col items-center justify-center gap-3 text-neutral-400 drop-shadow-sm transition-all duration-300 group-hover:text-white group-hover:drop-shadow-md dark:text-neutral-400 dark:group-hover:text-white">
+            <div className="transition-transform duration-300">
               {socialMedia.icon}
             </div>
             {socialMedia && showTooltip && (
@@ -101,7 +100,7 @@ function Hexagon({
                   ease: "easeInOut",
                   duration: 0.4,
                 }}
-                className="text-sm font-medium text-white/90 bg-black/80 px-2 py-1 rounded-md backdrop-blur-sm border border-white/10"
+                className="rounded-md border border-white/10 bg-black/80 px-2 py-1 text-sm font-medium text-white/90 backdrop-blur-sm"
               >
                 {socialMedia.name}
               </motion.div>
@@ -185,13 +184,13 @@ function HexagonCluster({
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center w-full h-full overflow-visible",
-        className
+        "relative flex h-full w-full items-center justify-center overflow-visible",
+        className,
       )}
       {...props}
     >
       {/* Subtle ambient glow effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-neutral-700/10 via-transparent to-transparent" />
+      <div className="bg-gradient-radial absolute inset-0 from-neutral-700/10 via-transparent to-transparent" />
 
       {/* Hexagon cluster container */}
       <div className="relative overflow-visible">

@@ -30,6 +30,19 @@
           "target": "components/ui/animated-avatar.tsx"
         }
       ]
+    },
+    {
+      "name": "pill-navbar",
+      "type": "registry:component",
+      "description": "A modern floating navigation bar with glassmorphism design, customizable positioning, and call-to-action support",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/navbars/pill-navbar.tsx",
+          "type": "registry:component",
+          "target": "components/ui/pill-navbar.tsx"
+        }
+      ]
     }
   ]
 }

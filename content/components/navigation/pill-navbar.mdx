@@ -1,0 +1,139 @@
+---
+title: Pill Navbar
+description: A modern floating navigation bar with glassmorphism design, customizable positioning, and call-to-action support
+---
+
+import { CodePreview } from "@/components/code-preview";
+import SnippetBlock from "@/components/ui/kibo-ui/snippet/snippet-demo";
+import { PillNavbar } from "@/components/showcase/pill-navbar.tsx";
+import {
+  sourceJsx,
+  sourceTsx,
+} from "@/components/source-code/navbars/pill-navbar.tsx";
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={420}
+  preview={
+    <div className="not-prose relative h-full w-full flex items-center justify-center">
+      <h1 className="text-3xl font-bold tracking-tight">The Navbar will show on top of the page</h1>
+      <PillNavbar
+        logo={"/images/profile.jpg"}
+        links={[
+          { label: "About", href: "#about" },
+          { label: "Projects", href: "#projects" },
+          { label: "Resume", href: "#resume" },
+          { label: "Blog", href: "#blog"},
+        ]}
+        cta={{ label: "Get in touch", href: "#contact" }}
+        position="top"
+      />
+    </div>
+  }
+  source={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        filename: "floating-navbar.tsx",
+        code: sourceTsx,
+      },
+      {
+        language: "jsx",
+        filename: "floating-navbar.jsx",
+        code: sourceJsx,
+      },
+    ],
+  }}
+  code={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        code: `import { PillNavbar } from "@/components/ui/pill-navbar";
+
+export default function NavbarDemo() {
+    return (
+      <div className="min-h-screen">
+        <PillNavbar
+          logo={"/images/profile.jpg"}
+          links={[
+            { label: "About", href: "#about" },
+            { label: "Projects", href: "#projects" },
+            { label: "Resume", href: "#resume" },
+            { label: "Blog", href: "#blog" },
+          ]}
+          cta={{ label: "Get in touch", href: "#contact" }}
+          position="top"
+        />
+        {/* Your page content */}
+      </div>
+    );
+}`,
+      },
+    ],
+  }}
+/>
+
+## Customization Examples
+
+<CodePreview
+  initialTab="preview"
+  codeHeight={300}
+  preview={
+    <div className="not-prose relative flex h-full w-full items-center justify-center">
+      <h1 className="text-center text-2xl font-semibold">
+        Clean bottom navigation without logo or CTA
+      </h1>
+      <PillNavbar
+        links={[
+          { label: "Home", href: "/" },
+          { label: "About", href: "/about" },
+          { label: "Services", href: "/services" },
+          { label: "Contact", href: "/contact" },
+        ]}
+        position="bottom"
+      />
+    </div>
+  }
+  code={{
+    defaultValue: "tsx",
+    data: [
+      {
+        language: "tsx",
+        code: `import { PillNavbar } from "@/components/ui/pill-navbar";
+
+export default function NavbarDemo() {
+  return (
+    <div className="min-h-screen">
+      <PillNavbar
+        links={[
+          { label: "Home", href: "#home" },
+          { label: "About", href: "#about" },
+          { label: "Services", href: "#service" },
+          { label: "Contact", href: "#contact" },
+        ]}
+        position="bottom"
+      />
+      {/* Your page content */}
+    </div>
+  );
+}`,
+      },
+    ],
+  }}
+/>
+
+## Installation
+
+<SnippetBlock packageManagers="bun pnpm npm yarn" componentName="pill-navbar" />
+
+### Props
+
+| Prop        | Type                        | Default      | Description                              |
+| ----------- | --------------------------- | ------------ | ---------------------------------------- |
+| `logo`      | `React.ReactNode \| string` | -            | Logo image URL, text, or React component |
+| `links`     | `NavLink[]`                 | **required** | Array of navigation links                |
+| `position`  | `"top" \| "bottom"`         | `"bottom"`   | Navigation bar position                  |
+| `cta`       | `CTAButton`                 | -            | Optional call-to-action button           |
+| `className` | `string`                    | -            | Additional CSS classes                   |

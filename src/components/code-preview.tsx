@@ -78,13 +78,13 @@ export function CodePreview({
     <div
       className={cn(
         "w-full rounded-lg border dark:border-neutral-800",
-        className
+        className,
       )}
       {...props}
     >
       <Tabs defaultValue={defaultTab}>
         <div className="flex items-center justify-between gap-2">
-          <TabsList className="bg-accent border-b dark:border-neutral-800 flex-1 flex-wrap">
+          <TabsList className="bg-accent flex-1 flex-wrap border-b dark:border-neutral-800">
             {preview && (
               <TabsTrigger value="preview">
                 <IconEye className="mr-1 size-5" />
@@ -93,7 +93,7 @@ export function CodePreview({
             )}
             {showSource && (
               <TabsTrigger value="source">
-                <IconSourceCode className="mr-1 size-5 " /> Source
+                <IconSourceCode className="mr-1 size-5" /> Source
               </TabsTrigger>
             )}
             {showCode && (
@@ -195,49 +195,21 @@ export function CodePreview({
           <TabsContent value="code">
             <div className="flex justify-center">
               <div style={contentWidthStyle} className="w-full">
+                {/* Show just the first code block directly without selection */}
                 <CodeBlock
-                  defaultValue={code?.defaultValue ?? code!.data[0].language}
-                  data={code!.data}
+                  defaultValue={code!.data[0].language}
+                  data={[code!.data[0]]} // Only show the first code block
                 >
-                  <CodeBlockHeader className="justify-between">
-                    <CodeBlockFiles
-                      childrenAction={({
-                        language,
-                        filename,
-                      }: CodeBlockData) => (
-                        <CodeBlockFilename key={language} value={language}>
-                          {filename}
-                        </CodeBlockFilename>
-                      )}
-                    />
+                  <CodeBlockHeader className="justify-end">
                     <div className="flex items-center gap-1">
-                      <CodeBlockSelect>
-                        <CodeBlockSelectTrigger>
-                          <CodeBlockSelectValue
-                            placeholder={
-                              code?.defaultValue ?? code!.data[0].language
-                            }
-                          />
-                        </CodeBlockSelectTrigger>
-                        <CodeBlockSelectContent
-                          childrenAction={({
-                            language,
-                            filename,
-                          }: CodeBlockData) => (
-                            <CodeBlockSelectItem
-                              key={language}
-                              value={language}
-                            >
-                              {filename}
-                            </CodeBlockSelectItem>
-                          )}
-                        />
-                      </CodeBlockSelect>
                       <CodeBlockCopyButton />
                     </div>
                   </CodeBlockHeader>
                   <CodeBlockBody
-                    childrenAction={({ language, code }: CodeBlockData) => (
+                    childrenAction={({
+                      language,
+                      code: codeContent,
+                    }: CodeBlockData) => (
                       <CodeBlockItem
                         key={language}
                         value={language}
@@ -255,7 +227,7 @@ export function CodePreview({
                         <CodeBlockContent
                           language={language as BundledLanguage}
                         >
-                          {code}
+                          {codeContent}
                         </CodeBlockContent>
                       </CodeBlockItem>
                     )}
