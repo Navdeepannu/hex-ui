@@ -30,7 +30,7 @@ const getCommands = (packageManager: string, componentName: string) => [
   {
     label: "shadcn",
     icon: ShadcnLogo,
-    code: `${packageManager} shadcn@latest add https://hex-ui.vercel.app/r/${componentName}.json`,
+    code: `${packageManager} shadcn@latest add https://hex-ui.com/r/${componentName}.json`,
   },
   {
     label: "Namespace",
@@ -71,7 +71,7 @@ const SnippetBlock = ({ componentName }: SnippetBlockProps) => {
         </SnippetTabsList>
         <div className="flex items-center gap-2">
           <Select value={packageManager} onValueChange={setPackageManager}>
-            <SelectTrigger className="min-w-[80px]  h-8">
+            <SelectTrigger className="h-8 min-w-[80px]">
               <SelectValue placeholder="Package Manager" />
             </SelectTrigger>
             <SelectContent>
@@ -89,7 +89,7 @@ const SnippetBlock = ({ componentName }: SnippetBlockProps) => {
               }
               onError={() =>
                 console.error(
-                  `Failed to copy "${activeCommand.code}" to clipboard`
+                  `Failed to copy "${activeCommand.code}" to clipboard`,
                 )
               }
               value={activeCommand.code}
