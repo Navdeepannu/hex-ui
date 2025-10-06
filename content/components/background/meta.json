@@ -1,5 +1,7 @@
 {
-  "title": "Backgrounds",
-  "defaultOpen": true,
+  "title": "Backgrounds", 
+  "description": "Interactive background components and effects",
+  "defaultOpen": false,
+  "icon": "Palette",
   "pages": ["background-ripple-effect"]
 }

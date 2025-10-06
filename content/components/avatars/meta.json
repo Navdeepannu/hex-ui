@@ -1,6 +1,7 @@
 {
   "title": "Avatars",
   "description": "Interactive avatar components with animations and tooltips",
-  "defaultOpen": true,
-  "pages": [ "animated-avatars"]
+  "defaultOpen": false,
+  "icon": "User",
+  "pages": ["animated-avatars"]
 }

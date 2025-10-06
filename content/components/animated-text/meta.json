@@ -1,10 +1,11 @@
 {
-  "title": "Animated Text",
+  "title": "Text Animations",
   "description": "Text animation components with smooth transitions and effects",
-  "defaultOpen": true,
+  "defaultOpen": false,
+  "icon": "Type",
   "pages": [
     "fade-text",
-    "slide-text",
+    "slide-text", 
     "transform-text",
     "word-text",
     "blur-text"

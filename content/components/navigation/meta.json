@@ -1,1 +1,7 @@
-{ "defaultOpen": true }
+{
+  "title": "Navigation", 
+  "description": "Navigation components and menu systems",
+  "defaultOpen": false,
+  "icon": "Navigation",
+  "pages": ["pill-navbar"]
+}

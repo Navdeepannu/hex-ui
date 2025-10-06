@@ -1,0 +1,7 @@
+{
+  "title": "Carousels",
+  "description": "Interactive carousel and slider components",
+  "defaultOpen": false,
+  "icon": "RotateCcw",
+  "pages": ["stacked-tabs"]
+}

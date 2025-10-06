@@ -140,7 +140,7 @@ Please render this component and show me the preview.`;
           <TabsContent value="preview">
             <div style={{ height: viewportHeight }} className="relative">
               {/* Action buttons positioned at top-right inside preview */}
-              <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+              <div className="absolute top-4 right-4 z-[5] flex items-center gap-2">
                 <Button
                   variant="secondary"
                   size="sm"

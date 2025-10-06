@@ -1,9 +1,7 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
-
-@import "fumadocs-ui/css/solar.css";
-
+@import "fumadocs-ui/css/neutral.css";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -150,5 +148,61 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Sidebar Customizations */
+@layer components {
+  /* Category headers with icons */
+  [data-sidebar] [data-collapsible] > [data-collapsible-trigger] {
+    @apply text-foreground/80 hover:text-foreground flex items-center gap-2 text-sm font-medium transition-colors;
+    padding-left: 0.5rem;
+  }
+
+  /* Child component items */
+  [data-sidebar] [data-collapsible] [data-collapsible-content] a {
+    @apply text-muted-foreground hover:text-foreground text-sm transition-colors;
+    padding-left: 1.5rem;
+    margin-left: 0.5rem;
+    border-left: 1px solid hsl(var(--border));
+    position: relative;
+  }
+
+  /* Add subtle connector line for child items */
+  [data-sidebar] [data-collapsible] [data-collapsible-content] a:before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: hsl(var(--border));
+  }
+
+  /* Active child item styling */
+  [data-sidebar]
+    [data-collapsible]
+    [data-collapsible-content]
+    a[data-active="true"] {
+    @apply text-foreground bg-accent/50;
+    border-left-color: hsl(var(--primary));
+  }
+
+  [data-sidebar]
+    [data-collapsible]
+    [data-collapsible-content]
+    a[data-active="true"]:before {
+    background: hsl(var(--primary));
+    width: 12px;
+  }
+
+  /* Improve spacing and typography */
+  [data-sidebar] {
+    @apply text-sm;
+  }
+
+  /* Category icons */
+  [data-sidebar] [data-icon] {
+    @apply text-muted-foreground h-4 w-4;
   }
 }

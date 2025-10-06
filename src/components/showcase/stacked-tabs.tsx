@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   motion,
   AnimatePresence,
@@ -29,7 +29,22 @@ const images = [
 
 export default function StackedTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
+
+  // Handle window resize and initial mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const x = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 18 });
@@ -46,7 +61,6 @@ export default function StackedTabs() {
         cancel();
       }
 
-      const isMobile = window.innerWidth < 768;
       const mobileThreshold = isMobile ? 50 : threshold;
 
       if (!down && Math.abs(mx) > mobileThreshold) {
@@ -76,15 +90,17 @@ export default function StackedTabs() {
   );
 
   const buttonWidth = 96;
-  const inactiveTabsWidth = (images.length - 1) * buttonWidth;
+  const mobileButtonWidth = 64; // Smaller width for mobile
+  const currentButtonWidth = isMobile ? mobileButtonWidth : buttonWidth;
+  const inactiveTabsWidth = (images.length - 1) * currentButtonWidth;
 
   return (
     <div
-      className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
+      className="relative mx-auto h-[280px] w-full max-w-[500px] touch-pan-x overflow-hidden rounded-2xl sm:h-[350px] sm:max-w-[600px] md:h-[400px] md:max-w-[700px] md:rounded-3xl"
       ref={containerRef}
       style={
         {
-          "--button-width": `${buttonWidth}px`,
+          "--button-width": `${currentButtonWidth}px`,
           "--total-tabs": images.length,
           "--active-index": activeIndex,
           "--inactive-tabs-width": `${inactiveTabsWidth}px`,
@@ -123,7 +139,7 @@ export default function StackedTabs() {
               animate={{
                 width: isActive
                   ? `calc(100% - ${inactiveTabsWidth}px)`
-                  : `${buttonWidth}px`,
+                  : `${currentButtonWidth}px`,
               }}
               initial={false}
               transition={{
@@ -158,7 +174,7 @@ export default function StackedTabs() {
                   },
                 )}
                 style={{
-                  width: isActive ? "100%" : `calc(${buttonWidth}px + 32px)`,
+                  width: isActive ? "100%" : `${currentButtonWidth}px`,
                   ...(isActive
                     ? {}
                     : {
@@ -166,7 +182,6 @@ export default function StackedTabs() {
                         right: isRightOfActive ? "0" : "auto",
                       }),
                 }}
-                data-debug={`idx:${idx} active:${activeIndex} isActive:${isActive} isLeft:${isLeftOfActive} isRight:${isRightOfActive}`}
               >
                 <img
                   src={image.src}
@@ -179,7 +194,7 @@ export default function StackedTabs() {
                 {/* Content */}
                 {isActive && (
                   <motion.div
-                    className="absolute inset-0 flex flex-col justify-end p-8"
+                    className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6 md:p-8"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
@@ -190,7 +205,7 @@ export default function StackedTabs() {
                   >
                     <div className="text-content">
                       <motion.h3
-                        className="mb-6 text-3xl leading-tight font-light text-white"
+                        className="mb-3 text-lg leading-tight font-light text-white sm:mb-4 sm:text-xl md:mb-6 md:text-3xl"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -201,7 +216,7 @@ export default function StackedTabs() {
                         {image.title}
                       </motion.h3>
                       <motion.div
-                        className="flex space-x-4"
+                        className="flex flex-col gap-2 sm:flex-row sm:gap-3 md:gap-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
@@ -212,7 +227,7 @@ export default function StackedTabs() {
                         {image.buttons.map((buttonText, buttonIdx) => (
                           <button
                             key={buttonIdx}
-                            className="rounded-full border-2 border-white bg-transparent px-6 py-2 text-sm font-medium text-white transition-all hover:bg-white hover:text-black"
+                            className="rounded-full border-2 border-white bg-transparent px-3 py-1.5 text-xs font-medium text-white transition-all hover:bg-white hover:text-black sm:px-4 sm:py-2 sm:text-sm md:px-6"
                           >
                             {buttonText}
                           </button>
