@@ -3,7 +3,6 @@
 A modern React component library built with **Tailwind CSS** and **shadcn/ui**. Copy-paste ready components for faster development.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/hex-ui.svg)](https://badge.fury.io/js/hex-ui)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 ## Features
@@ -22,12 +21,12 @@ A modern React component library built with **Tailwind CSS** and **shadcn/ui**. 
 ### Install with Shadcn CLI (Recommended)
 
 ```bash
-npx shadcn@latest add https://hex-ui.com/registry/stacked-tabs
+npx shadcn@latest add https://hex-ui.com/r/component-name
 ```
 
 ### Copy and Paste
 
-1. Browse the [component library](https://hex-ui.com)
+1. Browse the [Components](https://hex-ui.com)
 2. Copy the component code
 3. Paste it into your project
 4. Install dependencies if needed
@@ -119,10 +118,6 @@ Visit [hex-ui.com](https://hex-ui.com) for:
 - Interactive examples
 - Customization guides
 - Copy-paste code snippets
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
