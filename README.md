@@ -1,45 +1,146 @@
-# hexui
+# Hex-UI
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+A modern React component library built with **Tailwind CSS** and **shadcn/ui**. Copy-paste ready components for faster development.
 
-Run development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/hex-ui.svg)](https://badge.fury.io/js/hex-ui)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+## Features
+
+- **Beautiful Components** - Modern UI components with smooth animations
+- **Copy-Paste Ready** - No complex setup, just copy and use
+- **Shadcn CLI Compatible** - Install with a single command
+- **TypeScript First** - Fully typed components with excellent DX
+- **Mobile Responsive** - Works seamlessly across all devices
+- **Accessible** - Built with ARIA guidelines and keyboard navigation
+- **Customizable** - Easy to customize with Tailwind CSS
+- **Performance** - Optimized for speed and bundle size
+
+## Quick Start
+
+### Install with Shadcn CLI (Recommended)
 
 ```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+npx shadcn@latest add https://hex-ui.com/registry/stacked-tabs
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+### Copy and Paste
 
-## Explore
+1. Browse the [component library](https://hex-ui.com)
+2. Copy the component code
+3. Paste it into your project
+4. Install dependencies if needed
 
-In the project, you can see:
+## Available Components
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+### Carousels
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+- **Stacked Tabs** - Interactive image carousel with stacked card interface
 
-### Fumadocs MDX
+### Navigation
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
+- **Floating Navbar** - Modern navigation with glassmorphism design
 
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
+### Backgrounds
 
-## Learn More
+- **Hexagon Background** - Interactive hexagon grid with ripple effects
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+### Text Animations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+- **Split Text** - Animated text with character and word-level animations
+
+### Avatars
+
+- **Animated Avatar** - Interactive avatar with glassmorphism tooltips
+
+## Usage Example
+
+```tsx
+import { StackedTabs } from "@/components/ui/stacked-tabs";
+import { FloatingNavbar } from "@/components/ui/floating-navbar";
+
+export default function HomePage() {
+  return (
+    <div>
+      <FloatingNavbar />
+      <main className="container mx-auto px-4">
+        <StackedTabs />
+      </main>
+    </div>
+  );
+}
+```
+
+## Prerequisites
+
+- React 18+
+- Tailwind CSS 3.0+
+- TypeScript (recommended)
+
+## Customization
+
+All components are built with customization in mind:
+
+### Tailwind CSS Classes
+
+```tsx
+<StackedTabs className="mx-auto w-full max-w-4xl" />
+```
+
+### Component Props
+
+```tsx
+<StackedTabs buttonWidth={120} springConfig={{ stiffness: 300, damping: 20 }} />
+```
+
+### CSS Variables
+
+```css
+:root {
+  --primary: 222.2 84% 4.9%;
+  --primary-foreground: 210 40% 98%;
+}
+```
+
+## Dependencies
+
+Core dependencies that power Hex-UI components:
+
+- **motion/react** - Smooth animations and gestures
+- **tailwind-merge** - Intelligent Tailwind class merging
+- **clsx** - Conditional class names
+
+## Documentation
+
+Visit [hex-ui.com](https://hex-ui.com) for:
+
+- Component documentation
+- Interactive examples
+- Customization guides
+- Copy-paste code snippets
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [shadcn/ui](https://ui.shadcn.com/) - For the excellent component architecture
+- [Tailwind CSS](https://tailwindcss.com/) - For the utility-first CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - For smooth animations
+- [React](https://reactjs.org/) - For the component framework
+
+## Stats
+
+![GitHub stars](https://img.shields.io/github/stars/Navdeepannu/hex-ui?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Navdeepannu/hex-ui?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Navdeepannu/hex-ui)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Navdeepannu/hex-ui)
+
+---
+
+<div align="center">
+  <p>Built with ❤️ by <a href="https://github.com/Navdeepannu">Navdeep</a></p>
+  <p>If you find this project helpful, please consider giving it a ⭐</p>
+</div>
