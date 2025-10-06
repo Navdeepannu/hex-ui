@@ -2,9 +2,6 @@
 
 A modern React component library built with **Tailwind CSS** and **shadcn/ui**. Copy-paste ready components for faster development.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-
 ## Features
 
 - **Beautiful Components** - Modern UI components with smooth animations
@@ -136,6 +133,6 @@ Visit [hex-ui.com](https://hex-ui.com) for:
 ---
 
 <div align="center">
-  <p>Built with ❤️ by <a href="https://github.com/Navdeepannu">Navdeep</a></p>
+  <p>Built with ❤️ by <a href="https://www.navdeepsingh.dev">Navdeep Singh</a></p>
   <p>If you find this project helpful, please consider giving it a ⭐</p>
 </div>
