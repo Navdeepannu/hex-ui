@@ -1,5 +1,4 @@
-export const sourceTsx = `
-"use client";
+export const sourceTsx = `"use client";
 import React, { useState, useRef } from "react";
 import {
   motion,
@@ -35,9 +34,8 @@ export default function StackedTabs() {
   const x = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 18 });
 
-  // Gesture handling
   const bind = useDrag(
-    ({ movement: [mx], direction: [dx], down, cancel, tap }) => {
+    ({ movement: [mx], direction: [dx], down, cancel }) => {
       const threshold = 100;
 
       if (
@@ -52,12 +50,10 @@ export default function StackedTabs() {
 
       if (!down && Math.abs(mx) > mobileThreshold) {
         if (mx > 0) {
-          // Swipe right
           if (activeIndex > 0) {
             setActiveIndex(activeIndex - 1);
           }
         } else {
-          // Swipe left
           if (activeIndex < images.length - 1) {
             setActiveIndex(activeIndex + 1);
           }
@@ -70,7 +66,6 @@ export default function StackedTabs() {
       axis: "x",
       bounds: { left: -300, right: 300 },
       threshold: 10,
-      // Enhanced mobile support
       filterTaps: false,
       pointer: { touch: true },
     },
@@ -84,15 +79,14 @@ export default function StackedTabs() {
       className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
       ref={containerRef}
       style={{
-        ["--button-width" as any]: `${buttonWidth}px`,
-        ["--total-tabs" as any]: images.length,
-        ["--active-index" as any]: activeIndex,
-        ["--inactive-tabs-width" as any]: `${inactiveTabsWidth}px`,
+        "--button-width": \`\${buttonWidth}px\`,
+        "--total-tabs": images.length,
+        "--active-index": activeIndex,
+        "--inactive-tabs-width": \`\${inactiveTabsWidth}px\`,
         touchAction: "pan-x",
-      }}
+      } as React.CSSProperties}
       {...bind()}
     >
-      {/* Panels */}
       <div className="flex h-full">
         {images.map((image, idx) => {
           const isActive = idx === activeIndex;
@@ -121,8 +115,8 @@ export default function StackedTabs() {
               }}
               animate={{
                 width: isActive
-                  ? `calc(100% - ${inactiveTabsWidth}px)`
-                  : `${buttonWidth}px`,
+                  ? \`calc(100% - \${inactiveTabsWidth}px)\`
+                  : \`\${buttonWidth}px\`,
               }}
               initial={false}
               transition={{
@@ -141,23 +135,19 @@ export default function StackedTabs() {
               }}
               role="button"
               tabIndex={0}
-              aria-label={`Show slide ${idx + 1}`}
+              aria-label={\`Show slide \${idx + 1}\`}
             >
-              {/* Panel Control */}
               <div
                 className={cn(
                   "absolute top-0 bottom-0 overflow-hidden border-2 border-white/20",
                   isActive && "right-0 left-0 rounded-[2rem]",
-
                   !isActive && {
-                    // Images to the left of active
                     "right-0 rounded-l-[2rem]": isLeftOfActive,
-                    // Images to the right of active
                     "left-0 rounded-r-[2rem]": isRightOfActive,
                   },
                 )}
                 style={{
-                  width: isActive ? "100%" : `calc(${buttonWidth}px + 32px)`,
+                  width: isActive ? "100%" : \`calc(\${buttonWidth}px + 32px)\`,
                   ...(isActive
                     ? {}
                     : {
@@ -165,17 +155,15 @@ export default function StackedTabs() {
                         right: isRightOfActive ? "0" : "auto",
                       }),
                 }}
-                data-debug={`idx:${idx} active:${activeIndex} isActive:${isActive} isLeft:${isLeftOfActive} isRight:${isRightOfActive}`}
               >
                 <img
                   src={image.src}
-                  alt={`Slide ${idx + 1}`}
+                  alt={\`Slide \${idx + 1}\`}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                {/* Content */}
                 {isActive && (
                   <motion.div
                     className="absolute inset-0 flex flex-col justify-end p-8"
@@ -234,12 +222,9 @@ export default function StackedTabs() {
       </AnimatePresence>
     </div>
   );
-}
+}`;
 
-`
-
-export const sourceJsx = `
-"use client";
+export const sourceJsx = `"use client";
 import React, { useState, useRef } from "react";
 import {
   motion,
@@ -275,9 +260,8 @@ export default function StackedTabs() {
   const x = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 18 });
 
-  // Gesture handling
   const bind = useDrag(
-    ({ movement: [mx], direction: [dx], down, cancel, tap }) => {
+    ({ movement: [mx], direction: [dx], down, cancel }) => {
       const threshold = 100;
 
       if (
@@ -292,12 +276,10 @@ export default function StackedTabs() {
 
       if (!down && Math.abs(mx) > mobileThreshold) {
         if (mx > 0) {
-          // Swipe right
           if (activeIndex > 0) {
             setActiveIndex(activeIndex - 1);
           }
         } else {
-          // Swipe left
           if (activeIndex < images.length - 1) {
             setActiveIndex(activeIndex + 1);
           }
@@ -310,7 +292,6 @@ export default function StackedTabs() {
       axis: "x",
       bounds: { left: -300, right: 300 },
       threshold: 10,
-      // Enhanced mobile support
       filterTaps: false,
       pointer: { touch: true },
     },
@@ -324,15 +305,14 @@ export default function StackedTabs() {
       className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
       ref={containerRef}
       style={{
-        ["--button-width" as any]: `${buttonWidth}px`,
-        ["--total-tabs" as any]: images.length,
-        ["--active-index" as any]: activeIndex,
-        ["--inactive-tabs-width" as any]: `${inactiveTabsWidth}px`,
+        "--button-width": \`\${buttonWidth}px\`,
+        "--total-tabs": images.length,
+        "--active-index": activeIndex,
+        "--inactive-tabs-width": \`\${inactiveTabsWidth}px\`,
         touchAction: "pan-x",
       }}
       {...bind()}
     >
-      {/* Panels */}
       <div className="flex h-full">
         {images.map((image, idx) => {
           const isActive = idx === activeIndex;
@@ -361,8 +341,8 @@ export default function StackedTabs() {
               }}
               animate={{
                 width: isActive
-                  ? `calc(100% - ${inactiveTabsWidth}px)`
-                  : `${buttonWidth}px`,
+                  ? \`calc(100% - \${inactiveTabsWidth}px)\`
+                  : \`\${buttonWidth}px\`,
               }}
               initial={false}
               transition={{
@@ -381,23 +361,19 @@ export default function StackedTabs() {
               }}
               role="button"
               tabIndex={0}
-              aria-label={`Show slide ${idx + 1}`}
+              aria-label={\`Show slide \${idx + 1}\`}
             >
-              {/* Panel Control */}
               <div
                 className={cn(
                   "absolute top-0 bottom-0 overflow-hidden border-2 border-white/20",
                   isActive && "right-0 left-0 rounded-[2rem]",
-
                   !isActive && {
-                    // Images to the left of active
                     "right-0 rounded-l-[2rem]": isLeftOfActive,
-                    // Images to the right of active
                     "left-0 rounded-r-[2rem]": isRightOfActive,
                   },
                 )}
                 style={{
-                  width: isActive ? "100%" : `calc(${buttonWidth}px + 32px)`,
+                  width: isActive ? "100%" : \`calc(\${buttonWidth}px + 32px)\`,
                   ...(isActive
                     ? {}
                     : {
@@ -405,17 +381,15 @@ export default function StackedTabs() {
                         right: isRightOfActive ? "0" : "auto",
                       }),
                 }}
-                data-debug={`idx:${idx} active:${activeIndex} isActive:${isActive} isLeft:${isLeftOfActive} isRight:${isRightOfActive}`}
               >
                 <img
                   src={image.src}
-                  alt={`Slide ${idx + 1}`}
+                  alt={\`Slide \${idx + 1}\`}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                {/* Content */}
                 {isActive && (
                   <motion.div
                     className="absolute inset-0 flex flex-col justify-end p-8"
@@ -474,6 +448,4 @@ export default function StackedTabs() {
       </AnimatePresence>
     </div>
   );
-}
-
-`
+}`;

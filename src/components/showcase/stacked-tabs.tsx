@@ -36,7 +36,7 @@ export default function StackedTabs() {
 
   // Gesture handling
   const bind = useDrag(
-    ({ movement: [mx], direction: [dx], down, cancel, tap }) => {
+    ({ movement: [mx], direction: [dx], down, cancel }) => {
       const threshold = 100;
 
       if (
@@ -82,13 +82,15 @@ export default function StackedTabs() {
     <div
       className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
       ref={containerRef}
-      style={{
-        ["--button-width" as any]: `${buttonWidth}px`,
-        ["--total-tabs" as any]: images.length,
-        ["--active-index" as any]: activeIndex,
-        ["--inactive-tabs-width" as any]: `${inactiveTabsWidth}px`,
-        touchAction: "pan-x",
-      }}
+      style={
+        {
+          "--button-width": `${buttonWidth}px`,
+          "--total-tabs": images.length,
+          "--active-index": activeIndex,
+          "--inactive-tabs-width": `${inactiveTabsWidth}px`,
+          touchAction: "pan-x",
+        } as React.CSSProperties
+      }
       {...bind()}
     >
       {/* Panels */}

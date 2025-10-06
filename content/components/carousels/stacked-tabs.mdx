@@ -7,6 +7,11 @@ import { CodePreview } from "@/components/code-preview";
 import SnippetBlock from "@/components/ui/kibo-ui/snippet/snippet-demo";
 import StackedTabs from "@/components/showcase/stacked-tabs";
 
+import {
+  sourceJsx,
+  sourceTsx,
+} from "@/components/source-code/carousels/stacked-tabs.tsx";
+
 <CodePreview
   initialTab="preview"
   codeHeight={450}
@@ -99,6 +104,7 @@ const buttonWidth = 96;
 const inactiveTabsWidth = (images.length - 1) \* buttonWidth;
 
 return (
+
 <div
 className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
 ref={containerRef}
@@ -325,6 +331,7 @@ const buttonWidth = 96;
 const inactiveTabsWidth = (images.length - 1) \* buttonWidth;
 
 return (
+
 <div
 className="relative mx-auto h-[400px] w-full max-w-[700px] touch-pan-x overflow-hidden rounded-3xl"
 ref={containerRef}
