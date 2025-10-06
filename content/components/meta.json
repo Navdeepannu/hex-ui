@@ -1,4 +1,4 @@
 {
   "title": "Components",
-  "pages": ["animated-text", "background", "avatars", "navigation"]
+  "pages": ["animated-text", "background", "carousels", "navigation", "avatars"]
 }

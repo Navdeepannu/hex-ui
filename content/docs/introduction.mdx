@@ -1,53 +1,76 @@
 ---
 title: Introduction
-description: Welcome to Hex UI - A modern component library with beautiful animations
+description: A modern React component library built with Tailwind CSS and shadcn/ui. Copy-paste ready components for faster development.
 ---
 
-# Introduction
+**Hex-UI** is a growing collection of modern, reusable UI components built with React, Tailwind CSS, and shadcn/ui. Each component is designed to be copy-paste ready and can be easily installed using the Shadcn CLI.
 
-Welcome to **Hex UI**, a modern React component library inspired by hexagons because they are cool and efficient. Built with Next.js, TypeScript, and Framer Motion for smooth animations.
+Our goal is simple: help developers build polished interfaces faster with minimal setup. No complex configurations, no vendor lock-in — just clean, functional components you can drop into your project and customize as needed.
 
-## What is Hex UI?
+## Features
 
-Hex UI provides a collection of beautifully designed, accessible, and customizable React components with smooth animations. All components are built with modern web standards and can be easily integrated into your Next.js projects.
-
-## Key Features
-
-- **Beautiful Design**: Clean, modern components with attention to detail
-- **Smooth Animations**: Built with Framer Motion for fluid interactions
-- **Fully Customizable**: Easy to customize with Tailwind CSS
-- **Accessible**: Built with accessibility in mind
-- **Responsive**: Works seamlessly across all devices
-- **TypeScript Ready**: Full TypeScript support out of the box
-
-## Installation Methods
-
-Hex UI components can be installed using the shadcn CLI for seamless integration:
-
-```bash
-npx shadcn@latest add https://hex-ui.vercel.app/r/component-name.json
-```
-
-## Component Categories
-
-### Text Animations
-
-Beautiful text animations including fade, slide, blur, and transform effects.
-
-### Interactive Elements
-
-Buttons, cards, and other interactive components with hover effects.
-
-### Layout Components
-
-Responsive layout components for building modern interfaces.
+- **Copy-paste ready** — Download and use components immediately
+- **Shadcn CLI compatible** — Install with a single command
+- **Tailwind CSS powered** — Easy to customize and extend
+- **React + TypeScript** — Type-safe components with modern React patterns
+- **Mobile responsive** — Works seamlessly across all devices
+- **Accessible by default** — Built with ARIA guidelines in mind
+- **Animation support** — Smooth interactions with Framer Motion
 
 ## Getting Started
 
-<Cards>
-  <Card title="Install Next.js" href="/docs/install-nextjs" />
-  <Card title="Install Tailwind CSS" href="/docs/install-tailwindcss" />
-  <Card title="Browse Components" href="/components" />
-</Cards>
+You can use Hex-UI components in two ways:
 
-Ready to start building? Check out our installation guides above or browse the component library to see what's available.
+### Install with Shadcn CLI (Recommended)
+
+Install components directly into your project:
+
+```bash
+npx shadcn@latest add https://hex-ui.com/r/component-name
+```
+
+### Copy and Paste
+
+Browse our component library, copy the code, and paste it into your project. All components are self-contained and include their dependencies.
+
+> **Tip:** The CLI method automatically handles dependencies and file placement, making it the fastest way to get started.
+
+## Usage Example
+
+Once installed, importing and using components is straightforward:
+
+```tsx
+import { StackedTabs } from "@/components/ui/stacked-tabs";
+import { FloatingNavbar } from "@/components/ui/floating-navbar";
+
+export default function HomePage() {
+  return (
+    <div>
+      <FloatingNavbar />
+      <main className="container mx-auto px-4">
+        <StackedTabs />
+      </main>
+    </div>
+  );
+}
+```
+
+All components work out of the box with sensible defaults, but can be fully customized through props and Tailwind classes.
+
+## Customization
+
+Hex-UI components are built with customization in mind:
+
+- **Tailwind CSS** — Modify colors, spacing, and styling using utility classes
+- **Component props** — Configure behavior through TypeScript-safe props
+- **CSS variables** — Override theme values for consistent design systems
+- **Shadcn compatibility** — Integrates seamlessly with existing shadcn/ui projects
+
+```tsx
+// Example: Customizing a component
+<StackedTabs
+  className="w-full max-w-4xl"
+  buttonWidth={120}
+  springConfig={{ stiffness: 300, damping: 20 }}
+/>
+```

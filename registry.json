@@ -69,6 +69,20 @@
           "target": "components/ui/background-ripple-effect.tsx"
         }
       ]
+    },
+    {
+      "name": "stacked-tabs",
+      "type": "registry:component",
+      "description": "An interactive image carousel with stacked card interface, featuring smooth animations and mobile-friendly touch gestures",
+      "dependencies": ["motion/react", "@use-gesture/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/carousels/stacked-tabs.tsx",
+          "type": "registry:component",
+          "target": "components/ui/stacked-tabs.tsx"
+        }
+      ]
     }
   ]
 }
