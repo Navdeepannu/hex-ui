@@ -26,3 +26,11 @@ yarn-error.log*
 .env*.local
 .vercel
 next-env.d.ts
+
+# Hide development/internal folders from public repo
+/src/components/showcase/
+/src/components/source-code/
+/src/components/kibo-ui/
+/src/lib/layout.shared.tsx
+*.tsbuildinfo
+package-lock.json
