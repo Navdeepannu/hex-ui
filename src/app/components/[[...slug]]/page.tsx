@@ -17,7 +17,7 @@ export default async function Page(props: {
 
   // Handle base /components route by redirecting to fade-text
   if (!params.slug || params.slug.length === 0) {
-    redirect("/components/fade-text");
+    redirect("/components/animated-text/fade-text");
   }
 
   const page = componentsSource.getPage(params.slug);
@@ -26,7 +26,11 @@ export default async function Page(props: {
   const MDXContent = page.data.body;
 
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage
+      toc={page.data.toc}
+      full={page.data.full}
+      breadcrumb={{ enabled: false }}
+    >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>

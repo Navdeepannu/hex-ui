@@ -87,13 +87,14 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  /* Sidebar matches app background/foreground and has no border in light mode */
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: transparent;
   --sidebar-ring: oklch(0.708 0 0);
 }
 
@@ -121,13 +122,14 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  /* Sidebar matches app background/foreground and has no border in dark mode */
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: transparent;
   --sidebar-ring: oklch(0.556 0 0);
 }
 
@@ -148,61 +150,5 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* Sidebar Customizations */
-@layer components {
-  /* Category headers with icons */
-  [data-sidebar] [data-collapsible] > [data-collapsible-trigger] {
-    @apply text-foreground/80 hover:text-foreground flex items-center gap-2 text-sm font-medium transition-colors;
-    padding-left: 0.5rem;
-  }
-
-  /* Child component items */
-  [data-sidebar] [data-collapsible] [data-collapsible-content] a {
-    @apply text-muted-foreground hover:text-foreground text-sm transition-colors;
-    padding-left: 1.5rem;
-    margin-left: 0.5rem;
-    border-left: 1px solid hsl(var(--border));
-    position: relative;
-  }
-
-  /* Add subtle connector line for child items */
-  [data-sidebar] [data-collapsible] [data-collapsible-content] a:before {
-    content: "";
-    position: absolute;
-    left: -1px;
-    top: 50%;
-    width: 8px;
-    height: 1px;
-    background: hsl(var(--border));
-  }
-
-  /* Active child item styling */
-  [data-sidebar]
-    [data-collapsible]
-    [data-collapsible-content]
-    a[data-active="true"] {
-    @apply text-foreground bg-accent/50;
-    border-left-color: hsl(var(--primary));
-  }
-
-  [data-sidebar]
-    [data-collapsible]
-    [data-collapsible-content]
-    a[data-active="true"]:before {
-    background: hsl(var(--primary));
-    width: 12px;
-  }
-
-  /* Improve spacing and typography */
-  [data-sidebar] {
-    @apply text-sm;
-  }
-
-  /* Category icons */
-  [data-sidebar] [data-icon] {
-    @apply text-muted-foreground h-4 w-4;
   }
 }

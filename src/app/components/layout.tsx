@@ -1,16 +1,15 @@
-import { DocsLayout } from "fumadocs-ui/layouts/notebook";
 import { unifiedSource } from "@/lib/source";
 import { baseOptions } from "@/lib/layout.shared";
+import { DocsLayout } from "@/components/layout/docs";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <DocsLayout
-      tabMode="sidebar"
       {...baseOptions()}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       tree={unifiedSource.pageTree as any}
     >
-      {children}
+      <div className="pt-4">{children}</div>
     </DocsLayout>
   );
 }

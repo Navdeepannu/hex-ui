@@ -29,7 +29,7 @@ import {
   IconExternalLink,
   IconReload,
 } from "@tabler/icons-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 type BlockConfig = {
   data: CodeBlockData[];
   defaultValue?: string; // language key matching CodeBlockData.language

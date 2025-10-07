@@ -1,4 +1,4 @@
 {
   "title": "Getting Started",
-  "pages": ["introduction", "install-nextjs", "install-tailwindcss", "registry"]
+  "pages": ["introduction", "install-nextjs", "install-tailwindcss"]
 }

@@ -189,7 +189,7 @@ export default function StackedTabs() {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bottom-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                 {/* Content */}
                 {isActive && (
