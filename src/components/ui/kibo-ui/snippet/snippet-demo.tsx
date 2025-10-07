@@ -32,11 +32,6 @@ const getCommands = (packageManager: string, componentName: string) => [
     icon: ShadcnLogo,
     code: `${packageManager} shadcn@latest add https://hex-ui.com/r/${componentName}.json`,
   },
-  {
-    label: "Namespace",
-    icon: IconHexagon,
-    code: `${packageManager} hex-ui@latest add ${componentName}`,
-  },
 ];
 
 interface SnippetBlockProps {
@@ -64,7 +59,7 @@ const SnippetBlock = ({ componentName }: SnippetBlockProps) => {
         <SnippetTabsList>
           {commands.map((command) => (
             <SnippetTabsTrigger key={command.label} value={command.label}>
-              <command.icon size={14} />
+              <command.icon />
               <span>{command.label}</span>
             </SnippetTabsTrigger>
           ))}
