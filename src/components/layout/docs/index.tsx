@@ -34,7 +34,6 @@ import {
   type IconItemType,
   type LinkItemType,
 } from "../shared/index";
-import { LanguageToggle, LanguageToggleText } from "../../language-toggle";
 import { CollapsibleControl, LayoutBody, LayoutTabs, Navbar } from "./client";
 import { TreeContextProvider } from "fumadocs-ui/contexts/tree";
 import { ThemeToggle } from "../../theme-toggle";
@@ -46,6 +45,10 @@ import {
   getSidebarTabs,
   type GetSidebarTabsOptions,
 } from "fumadocs-ui/utils/get-sidebar-tabs";
+import {
+  LanguageToggle,
+  LanguageToggleText,
+} from "@/components/ui/language-toggle";
 
 export interface DocsLayoutProps extends BaseLayoutProps {
   tree: PageTree.Root;
