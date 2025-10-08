@@ -99,10 +99,7 @@ const Landing = () => {
           interactive={true}
           className="opacity- absolute inset-0"
         />
-        {/* Enhanced faded masks for readability and to avoid touching navbar */}
-        {/* Top fade so background doesn't touch/compete with navbar */}
         <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b to-transparent" />
-        {/* Left blend using background color to avoid visible seam in light mode */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-40"
           style={{
@@ -110,7 +107,6 @@ const Landing = () => {
               "linear-gradient(to right, var(--background), color-mix(in oklch, var(--background) 70%, transparent) 40%, transparent)",
           }}
         />
-        {/* Radial readability mask to reduce background behind heading/subheading area */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -118,15 +114,12 @@ const Landing = () => {
               "radial-gradient(80% 50% at 50% 22%, var(--background) 0%, color-mix(in oklch, var(--background) 50%, transparent) 35%, transparent 60%)",
           }}
         />
-        {/* Keep gentle overall vertical fade */}
         <div className="via-background/30 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent" />
         <div className="from-background via-background/80 pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent" />
-        {/** left gradient removed (handled above) to prevent double overlay seams **/}
         <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl px-10">
-        {/* Main heading animation */}
         <motion.h1
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -140,7 +133,6 @@ const Landing = () => {
           Build beautiful interfaces faster and easier
         </motion.h1>
 
-        {/* Description animation */}
         <motion.p
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,7 +147,6 @@ const Landing = () => {
           rapid development, and smooth integration with Tailwind and ShadCN.
         </motion.p>
 
-        {/* Buttons animation */}
         <motion.div
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}

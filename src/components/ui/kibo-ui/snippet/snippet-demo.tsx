@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IconHexagon } from "@tabler/icons-react";
 import ShadcnLogo from "../../shadcn-logo";
 import React, { useState } from "react";
 

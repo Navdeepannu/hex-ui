@@ -14,7 +14,7 @@ function HexagonBackground({
   className,
   children,
   hexagonProps,
-  hexagonSize = 75,
+  hexagonSize = 50,
   hexagonMargin = 3,
   interactive = false,
   ...props
