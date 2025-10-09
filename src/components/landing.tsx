@@ -128,7 +128,7 @@ const Landing = () => {
             delay: 0.1,
             ease: [0.21, 0.47, 0.32, 0.98],
           }}
-          className="mx-auto items-center bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-900 bg-clip-text text-center text-4xl font-semibold tracking-tight text-transparent [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-400 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.2)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.25)]"
+          className="tracking-tifont-medium parent mx-auto items-center bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-900 bg-clip-text text-center text-4xl font-semibold [text-shadow:0px_2px_4px_rgba(0,0,0,0.15)] md:text-4xl lg:max-w-4xl lg:text-7xl lg:[text-shadow:0px_3px_6px_rgba(0,0,0,0.2)] dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-400 dark:[text-shadow:0px_2px_4px_rgba(255,255,255,0.2)] lg:dark:[text-shadow:0px_3px_6px_rgba(255,255,255,0.25)]"
         >
           Build beautiful interfaces faster and easier
         </motion.h1>
@@ -166,7 +166,7 @@ const Landing = () => {
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
           >
-            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 transition-transform duration-150 hover:bg-white hover:opacity-80 hover:shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] focus-visible:ring-2 focus-visible:ring-zinc-400/40 focus-visible:outline-none dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200 dark:hover:bg-white/5 dark:hover:opacity-100 dark:focus-visible:ring-neutral-700/50">
+            <button className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-2 text-base text-zinc-700 transition-transform duration-150 hover:bg-white hover:shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] focus-visible:ring-2 focus-visible:ring-zinc-400/40 focus-visible:outline-none dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200 dark:hover:bg-white/5 dark:hover:opacity-100 dark:focus-visible:ring-neutral-700/50">
               <Link href="/docs/introduction">Documentation</Link>
             </button>
           </motion.div>
@@ -180,7 +180,7 @@ const Landing = () => {
               ease: [0.21, 0.47, 0.32, 0.98],
             }}
           >
-            <button className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-gradient-to-b from-zinc-800 via-zinc-700 to-zinc-900 px-6 py-2 text-base text-white transition duration-150 hover:shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] focus-visible:ring-2 focus-visible:ring-zinc-400/40 focus-visible:outline-none dark:border-neutral-800 dark:bg-transparent dark:text-neutral-200 dark:hover:bg-white/5 dark:focus-visible:ring-neutral-700/50">
+            <button className="inline-flex items-center justify-center rounded-2xl border border-transparent bg-gradient-to-b from-zinc-800 via-zinc-700 to-zinc-900 px-6 py-2 text-base text-white transition duration-150 hover:shadow-[0_10px_20px_rgba(0,_0,_0,_.1),0_3px_6px_rgba(0,_0,_0,_.05)] focus-visible:ring-2 focus-visible:ring-zinc-400/40 focus-visible:outline-none dark:border-neutral-800 dark:bg-transparent dark:from-neutral-50 dark:via-neutral-50 dark:to-neutral-500 dark:text-black dark:hover:bg-white/5 dark:focus-visible:ring-neutral-700/50">
               <Link href="/components/animated-text/fade-text">
                 Browse Components
               </Link>

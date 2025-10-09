@@ -1,7 +1,7 @@
 {
   "description": "Text animation components with smooth transitions and effects",
-  
-  "defaultOpen": false,
+
+  "defaultOpen": true,
   "icon": "Type",
   "pages": [
     "fade-text",

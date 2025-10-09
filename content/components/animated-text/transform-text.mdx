@@ -13,17 +13,13 @@ import {
   transformUsageTsx,
 } from "@/components/source-code/text-animations/index";
 
-Transform animations add dynamic scaling and rotation effects to create engaging text reveals with dimensional changes.
-
 ### Scale Animation
-
-Characters scale up from a smaller size creating a growing effect.
 
 <CodePreview
   initialTab="preview"
   codeHeight={420}
   preview={
-    <div className="text-center py-8">
+    <div className="py-8 text-center">
       <SplitText
         text="Scale animation"
         animation="scale"
@@ -49,21 +45,17 @@ Characters scale up from a smaller size creating a growing effect.
   }}
   code={{
     defaultValue: "tsx",
-    data: [
-      { language: "tsx", filename: "usage.tsx", code: transformUsageTsx },
-    ],
+    data: [{ language: "tsx", filename: "usage.tsx", code: transformUsageTsx }],
   }}
 />
 
 ### Rotate Animation
 
-Characters rotate into position creating a spinning entrance effect.
-
 <CodePreview
   initialTab="preview"
   codeHeight={200}
   preview={
-    <div className="text-center py-8">
+    <div className="py-8 text-center">
       <SplitText
         text="Rotate animation"
         animation="rotate"

@@ -1,5 +1,6 @@
 import { IconBrandX, IconHexagonFilled } from "@tabler/icons-react";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+
 /**
  * Shared layout configurations
  *
@@ -15,7 +16,7 @@ export function baseOptions(): BaseLayoutProps {
       transparentMode: "top",
       title: (
         <span className="flex items-center gap-1">
-          <IconHexagonFilled />
+          <IconHexagonFilled className="text-foregorund" />
           Hex UI
         </span>
       ),
