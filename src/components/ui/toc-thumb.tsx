@@ -1,7 +1,7 @@
-import { type HTMLAttributes, type RefObject, useEffect, useRef } from 'react';
-import * as Primitive from 'fumadocs-core/toc';
-import { useOnChange } from 'fumadocs-core/utils/use-on-change';
-import { useEffectEvent } from 'fumadocs-core/utils/use-effect-event';
+import { type HTMLAttributes, type RefObject, useEffect, useRef } from "react";
+import * as Primitive from "fumadocs-core/toc";
+import { useOnChange } from "fumadocs-core/utils/use-on-change";
+import { useEffectEvent } from "fumadocs-core/utils/use-effect-event";
 
 export type TOCThumb = [top: number, height: number];
 
@@ -31,8 +31,8 @@ function calc(container: HTMLElement, active: string[]): TOCThumb {
 }
 
 function update(element: HTMLElement, info: TOCThumb): void {
-  element.style.setProperty('--fd-top', `${info[0]}px`);
-  element.style.setProperty('--fd-height', `${info[1]}px`);
+  element.style.setProperty("--fd-top", `${info[0]}px`);
+  element.style.setProperty("--fd-height", `${info[1]}px`);
 }
 
 export function TocThumb({
@@ -61,7 +61,7 @@ export function TocThumb({
     return () => {
       observer.disconnect();
     };
-  }, [containerRef]);
+  }, [onResize, containerRef]);
 
   useOnChange(active, () => {
     if (!containerRef.current || !thumbRef.current) return;

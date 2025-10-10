@@ -63,6 +63,7 @@ function HexagonShape({
         "[clip-path:polygon(50%_0%,_100%_25%,_100%_75%,_50%_100%,_0%_75%,_0%_25%)]",
         "origin-center hover:scale-[1.09]",
         socialMedia && "cursor-pointer",
+        isHovered && "scale-110",
         className,
       )}
     >
