@@ -112,8 +112,8 @@ export const Spotlight = ({
       style={{
         opacity: intensity,
         // Feather the overall effect to avoid hard edges; include WebKit for Safari.
-        maskImage: wrapperMask as any,
-        WebkitMaskImage: wrapperMask as any,
+        maskImage: wrapperMask,
+        WebkitMaskImage: wrapperMask,
       }}
     >
       {variant !== "right" && (

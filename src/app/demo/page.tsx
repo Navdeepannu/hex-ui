@@ -111,9 +111,17 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 pt-28 pb-16 md:pt-36">
-      <Spotlight />
+      {/* Extended spotlight: covers full hero, soft mask, no hard cutoff */}
+      <Spotlight
+        bounds="viewport"
+        className="fixed top-0 left-1/2 -translate-x-1/2 w-screen h-[90vh] z-0"
+        translateY={-220}
+        mask="radial-gradient(120%_120%_at_50%_10%, #000 60%, transparent 100%)"
+        intensity={0.7}
+        blur={14}
+      />
 
-      <div className="items-cente flex flex-col text-center">
+      <div className="relative z-10 flex flex-col text-center">
         <div className="mb-4">
           <span className="border-primary/20 bg-primary/10 text-primary inline-flex items-center space-x-2 rounded-full border px-3 py-1 text-xs font-medium">
             Start Free 14-Day Trial
