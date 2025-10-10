@@ -114,7 +114,7 @@ const Hero = () => {
       {/* Extended spotlight: covers full hero, soft mask, no hard cutoff */}
       <Spotlight
         bounds="viewport"
-        className="fixed top-0 left-1/2 -translate-x-1/2 w-screen h-[90vh] z-0"
+        className="fixed top-0 left-1/2 z-0 h-[90vh] w-screen -translate-x-1/2"
         translateY={-220}
         mask="radial-gradient(120%_120%_at_50%_10%, #000 60%, transparent 100%)"
         intensity={0.7}
