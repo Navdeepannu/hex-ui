@@ -34,6 +34,11 @@ export function baseOptions(): BaseLayoutProps {
         active: "nested-url",
       },
       {
+        text: "Templates",
+        url: "/demo",
+        active: "nested-url",
+      },
+      {
         icon: <IconBrandX />,
         type: "icon",
         url: "/twitter",

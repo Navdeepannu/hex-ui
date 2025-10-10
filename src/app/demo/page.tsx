@@ -6,8 +6,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { IconArrowRight } from "@tabler/icons-react";
 import { motion } from "motion/react";
-import { Spotlight } from "@/components/acternity/sportlught";
 import { cn } from "@/lib/utils";
+import { HexagonBackground } from "registry/backgrounds/background-ripple-effect";
+import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
+import { ProgressiveBlur } from "@/components/motion-primitives/progressive-blur";
 
 export default function DemoPage() {
   return (
@@ -15,16 +17,18 @@ export default function DemoPage() {
       <Navbar />
       <Hero />
       <ProductShowcase />
+      <LogoCloud />
     </div>
   );
 }
 
 const Navbar = () => {
   const [scrolled, setScrolled] = React.useState(false);
+
   React.useEffect(() => {
     const onScroll = () => {
       if (typeof window === "undefined") return;
-      setScrolled(window.scrollY > 8);
+      setScrolled(window.scrollY > 30);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -42,12 +46,14 @@ const Navbar = () => {
     <div className="sticky top-0 z-50">
       <motion.header
         initial={false}
-        animate={{ y: scrolled ? 12 : 0 }}
-        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-        className={cn(
-          "mx-auto w-full max-w-6xl px-4",
-          scrolled ? "py-2" : "py-4",
-        )}
+        animate={{
+          y: scrolled ? 12 : 0,
+          scale: scrolled ? 0.998 : 1,
+          scaleX: scrolled ? 0.96 : 1,
+        }}
+        transition={{ type: "spring", stiffness: 520, damping: 34, mass: 0.8 }}
+        className={cn("mx-auto w-full max-w-6xl transform-gpu px-4 py-3")}
+        style={{ willChange: "transform", transformOrigin: "50% 0%" }}
       >
         <div
           className={cn(
@@ -111,16 +117,6 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 pt-28 pb-16 md:pt-36">
-      {/* Extended spotlight: covers full hero, soft mask, no hard cutoff */}
-      <Spotlight
-        bounds="viewport"
-        className="fixed top-0 left-1/2 z-0 h-[90vh] w-screen -translate-x-1/2"
-        translateY={-220}
-        mask="radial-gradient(120%_120%_at_50%_10%, #000 60%, transparent 100%)"
-        intensity={0.7}
-        blur={14}
-      />
-
       <div className="relative z-10 flex flex-col text-center">
         <div className="mb-4">
           <span className="border-primary/20 bg-primary/10 text-primary inline-flex items-center space-x-2 rounded-full border px-3 py-1 text-xs font-medium">
@@ -139,10 +135,10 @@ const Hero = () => {
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Button asChild size="lg" className="px-6" variant="default">
+          <Button asChild size="lg" variant="default">
             <Link href="#start">Start Free</Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="px-6">
+          <Button asChild variant={"outline"} size="lg" className="">
             <Link href="#demo">Request a demo</Link>
           </Button>
         </div>
@@ -153,23 +149,25 @@ const Hero = () => {
 
 const ProductShowcase = () => {
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
-      <div className="mt-8">
-        <div className="border-border/60 bg-card/70 supports-[backdrop-filter]:bg-card/50 relative overflow-hidden rounded-2xl border shadow-sm backdrop-blur">
-          {/* Soften top edge only; remove restrictive center mask */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 to-transparent dark:from-white/5" />
+    <>
+      <HexagonBackground />
 
-          {/* Skeleton demo in place of image */}
-          <div className="relative aspect-[16/9] w-full p-2 md:p-3">
-            <DashboardSkeleton />
+      <section className="mx-auto w-full max-w-6xl px-4 py-12 md:py-16">
+        <div className="mt-8">
+          <div className="border-border/60 bg-card/70 supports-[backdrop-filter]:bg-card/50 relative overflow-hidden rounded-2xl border shadow-sm backdrop-blur">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/5 to-transparent dark:from-white/5" />
+
+            {/* Skeleton demo - demo the product */}
+            <div className="relative aspect-[16/9] w-full p-2 md:p-3">
+              <DashboardSkeleton />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
-// A tasteful, subtle dashboard placeholder when no image is available.
 const DashboardSkeleton = () => {
   return (
     <div className="border-border/60 from-background/60 to-background/30 h-full w-full rounded-xl border bg-gradient-to-b">
@@ -217,3 +215,58 @@ const DashboardSkeleton = () => {
     </div>
   );
 };
+
+function LogoCloud() {
+  const brands = [
+    { name: "Vercel" },
+    { name: "Stripe" },
+    { name: "Linear" },
+    { name: "Figma" },
+    { name: "Notion" },
+    { name: "Supabase" },
+    { name: "Cloudflare" },
+    { name: "Arc" },
+  ];
+
+  return (
+    <section className="bg-background overflow-hidden py-16">
+      <div className="group relative m-auto max-w-7xl px-6">
+        <div className="md:pl-10">
+          <p className="text-muted-foreground text-start text-xs font-medium tracking-wider uppercase">
+            Trusted by leading teams
+          </p>
+          <p className="text-muted-foreground/80 mt-1 text-start text-sm">
+            From fast-growing startups to global brands
+          </p>
+        </div>
+        <div className="flex flex-col items-center justify-center md:flex-row">
+          <div className="relative py-6 md:w-[calc(100%-11rem)]">
+            <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
+              {brands.map((b) => (
+                <div key={b.name} className="flex">
+                  <div className="text-foreground/80 hover:text-foreground inline-flex h-12 items-center rounded-xl px-4 text-base font-semibold tracking-tight whitespace-nowrap transition-colors md:h-14 md:text-lg">
+                    {b.name}
+                  </div>
+                </div>
+              ))}
+            </InfiniteSlider>
+
+            {/* Edge gradients and gentle blur */}
+            <div className="from-background absolute inset-y-0 left-0 w-20 bg-linear-to-r" />
+            <div className="from-background absolute inset-y-0 right-0 w-20 bg-linear-to-l" />
+            <ProgressiveBlur
+              className="absolute top-0 left-0 h-full w-20"
+              direction="left"
+              blurIntensity={1}
+            />
+            <ProgressiveBlur
+              className="absolute top-0 right-0 h-full w-20"
+              direction="right"
+              blurIntensity={1}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

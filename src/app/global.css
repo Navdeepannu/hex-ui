@@ -144,6 +144,22 @@
   }
 }
 
+/* Marquee utilities for InfiniteSlider */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--marquee-duration, 36s) linear infinite;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
