@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.env.example
+ACTION_PLAN.md
+CONTRIBUTING.md
+DEPLOY.md
+DESIGN_IMPROVEMENTS.md
+PRODUCTION_READY.md
+REFACTORING_SUMMARY.md
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+
+
+templates.ts
+sections-registry.ts
+
+
+
+

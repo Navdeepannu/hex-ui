@@ -1,0 +1,12 @@
+# robots.txt for Hex UI
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://hex-ui.com/sitemap.xml
