@@ -81,9 +81,7 @@ const page = () => {
           </div>
         </CodePreview>
         <div className="text-muted-foreground/60 mt-4 flex items-center gap-2 text-xs italic">
-          <span className="bg-accent rounded px-1.5 py-0.5 not-italic">
-            TIP:
-          </span>
+          <span className="bg-accent rounded px-1.5 py-0.5 not-italic">TIP:</span>
           Dark mode recommended
         </div>
       </div>
