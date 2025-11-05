@@ -1,0 +1,64 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "hex-ui",
+  "homepage": "https://hex-ui.com",
+  "items": [
+    {
+      "name": "animated-text",
+      "type": "registry:component",
+      "title": "Animated Text",
+      "description": "A flexible text animation component with multiple animation presets including blur, fade, scale, and slide effects. Supports character, word, and line-based animations.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/animated-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["animations", "text-effects"]
+    },
+    {
+      "name": "background-ripple-effect",
+      "type": "registry:component",
+      "title": "Background Ripple Effect",
+      "description": "An interactive hexagon background component with ripple effects. Features customizable hexagon size, margins, and click-to-ripple animations.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/background-ripple-effect.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "css": {
+        "registry/default/background-ripple-effect.css": "@keyframes cell-ripple {\n  0% { opacity: 1; background: rgb(206, 224, 254); }\n  100% { opacity: 0; background: rgb(206, 224, 254); }\n}"
+      },
+      "tailwind": {
+        "theme": {
+          "extend": {
+            "animation": {
+              "cell-ripple": "cell-ripple var(--duration) ease-out var(--delay) forwards"
+            }
+          }
+        }
+      },
+      "categories": ["backgrounds", "animations", "interactive"]
+    },
+    {
+      "name": "striped-background",
+      "type": "registry:component",
+      "title": "Striped Background",
+      "description": "A modern striped background component with diagonal stripes. Perfect for hero sections and eye-catching layouts.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/striped-background.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": ["backgrounds", "layouts"]
+    }
+  ]
+}
