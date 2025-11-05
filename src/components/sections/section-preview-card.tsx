@@ -12,26 +12,17 @@ import {
   getInstallCommand,
   type PackageManager,
 } from "./package-manager-selector";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface SectionPreviewCardProps {
   section: Section;
   className?: string;
 }
 
-export function SectionPreviewCard({
-  section,
-  className,
-}: SectionPreviewCardProps) {
+export function SectionPreviewCard({ section, className }: SectionPreviewCardProps) {
   const [copied, setCopied] = React.useState(false);
   const [showCode, setShowCode] = React.useState(false);
-  const [packageManager, setPackageManager] =
-    React.useState<PackageManager>("npx");
+  const [packageManager, setPackageManager] = React.useState<PackageManager>("npx");
 
   const installCommand = getInstallCommand(packageManager, section.id);
 
@@ -50,7 +41,7 @@ export function SectionPreviewCard({
   return (
     <>
       {/* Compact bordered card with all controls */}
-      <div className={cn("group relative", className)}>
+      <div className={cn("relative", className)}>
         <div className="">
           {/* Control Bar - All controls in one compact row */}
           <div className="border-accent mx-auto flex max-w-7xl items-center justify-between border-x bg-white px-4 py-3 dark:bg-black">
@@ -62,7 +53,7 @@ export function SectionPreviewCard({
                     onClick={() => setShowCode(false)}
                     className={cn(
                       "flex items-center gap-1.5 rounded-md px-3 py-1.5 font-mono text-xs transition-all duration-200",
-                      !showCode ? "bg-accent" : "",
+                      !showCode ? "bg-accent" : ""
                     )}
                   >
                     <Eye className="h-3.5 w-3.5" />
@@ -72,7 +63,7 @@ export function SectionPreviewCard({
                     onClick={() => setShowCode(true)}
                     className={cn(
                       "flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all duration-200",
-                      showCode ? "bg-accent" : "",
+                      showCode ? "bg-accent" : ""
                     )}
                   >
                     <Code2 className="h-3.5 w-3.5" />
@@ -199,7 +190,8 @@ export function SectionPreviewCard({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
-                    className="relative min-h-[600px] w-full"
+                    className="relative min-h-[600px] w-full overflow-hidden"
+                    style={{ transform: "translate3d(0, 0, 0)" }}
                   >
                     <Component />
                   </motion.div>

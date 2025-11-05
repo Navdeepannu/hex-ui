@@ -27,12 +27,18 @@ export const data = {
           url: "/components/background-ripple-effect",
         },
         {
-          title: "Animated Text",
-          url: "/components/animated-text",
+          title: "Striped Background",
+          url: "/components/striped-background",
         },
+      ],
+    },
+    {
+      title: "Text Effects",
+      url: "#",
+      items: [
         {
-          title: "Background Slide",
-          url: "#",
+          title: "Text Effect",
+          url: "/components/animated-text",
         },
       ],
     },
