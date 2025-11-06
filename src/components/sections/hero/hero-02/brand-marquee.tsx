@@ -6,14 +6,14 @@ import { ProgressiveBlur } from "@/components/showcase/progressive-blur";
 
 export default function BrandMarquee() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-background via-background/95 to-background py-20">
+    <section className="from-background via-background/95 to-background relative overflow-hidden bg-linear-to-b py-20">
       <div className="relative m-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mb-12 text-center">
-          <p className="text-sm font-medium tracking-wide text-muted-foreground uppercase">
+          <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
             Trusted by industry leaders
           </p>
-          <div className="mt-2 h-px w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto" />
+          <div className="via-primary/50 mx-auto mt-2 h-px w-24 bg-linear-to-r from-transparent to-transparent" />
         </div>
 
         {/* Dual Row Marquee */}
@@ -24,7 +24,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/openai_logo.svg"
                     alt="OpenAI logo"
                     height={40}
@@ -48,7 +48,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-7 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-7 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/google_Logo.svg"
                     alt="Google logo"
                     height={40}
@@ -60,7 +60,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/notion_logo.svg"
                     alt="Notion logo"
                     height={40}
@@ -72,7 +72,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-5 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-5 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/hubspot_logo.svg"
                     alt="HubSpot logo"
                     height={40}
@@ -84,7 +84,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/shopify_logo.svg"
                     alt="Shopify logo"
                     height={40}
@@ -111,7 +111,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/notion_logo.svg"
                     alt="Notion logo"
                     height={40}
@@ -123,7 +123,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-5 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-5 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/hubspot_logo.svg"
                     alt="HubSpot logo"
                     height={40}
@@ -135,7 +135,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/shopify_logo.svg"
                     alt="Shopify logo"
                     height={40}
@@ -147,7 +147,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-6 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-6 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/openai_logo.svg"
                     alt="OpenAI logo"
                     height={40}
@@ -171,7 +171,7 @@ export default function BrandMarquee() {
               <div className="group/logo flex items-center justify-center px-4 transition-all duration-300">
                 <div className="relative transform transition-all duration-500 ease-out group-hover/logo:scale-110">
                   <Image
-                    className="h-7 w-auto opacity-60 transition-all duration-500 group-hover/logo:opacity-100 invert dark:invert-0"
+                    className="h-7 w-auto opacity-60 invert transition-all duration-500 group-hover/logo:opacity-100 dark:invert-0"
                     src="/brand_logos/google_Logo.svg"
                     alt="Google logo"
                     height={40}
@@ -194,7 +194,7 @@ export default function BrandMarquee() {
         </div>
 
         {/* Background decoration */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+        <div className="from-background to-background pointer-events-none absolute inset-0 bg-gradient-to-r via-transparent" />
       </div>
     </section>
   );

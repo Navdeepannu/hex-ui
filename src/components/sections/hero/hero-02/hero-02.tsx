@@ -36,7 +36,7 @@ function AnimatedCounter({ value, suffix = "", delay = 0 }: { value: number; suf
 
 export function Hero02() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-background">
       <Header />
       <section className="relative pt-24 md:pt-36">
         <div className="mx-auto max-w-7xl px-4">

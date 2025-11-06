@@ -13,6 +13,7 @@ import {
   type PackageManager,
 } from "./package-manager-selector";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { SectionCodeViewer } from "./section-code-viewer";
 
 interface SectionPreviewCardProps {
   section: Section;
@@ -73,7 +74,7 @@ export function SectionPreviewCard({ section, className }: SectionPreviewCardPro
 
                 {/* Separator */}
                 <div className="relative flex items-center">
-                  <div className="h-6 w-px bg-gradient-to-b from-transparent via-neutral-300 to-transparent dark:via-neutral-700"></div>
+                  <div className="h-6 w-px bg-linear-to-b from-transparent via-neutral-300 to-transparent dark:via-neutral-700"></div>
                   <div className="absolute left-0 h-2 w-px bg-neutral-200 dark:bg-neutral-800"></div>
                   <div className="absolute bottom-0 left-0 h-2 w-px bg-neutral-200 dark:bg-neutral-800"></div>
                 </div>
@@ -202,34 +203,9 @@ export function SectionPreviewCard({ section, className }: SectionPreviewCardPro
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.15 }}
-                    className="min-h-[600px] bg-gradient-to-br from-neutral-900 via-neutral-950 to-black p-6"
+                    className="min-h-[600px] overflow-hidden"
                   >
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="flex gap-1.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
-                            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500" />
-                            <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
-                          </div>
-                          <span className="ml-2 font-mono text-xs text-neutral-400">
-                            {section.id}.tsx
-                          </span>
-                        </div>
-                      </div>
-                      <div className="rounded-lg bg-black/40 p-5 ring-1 ring-white/5">
-                        <pre className="overflow-x-auto text-sm leading-relaxed text-neutral-300">
-                          <code className="font-mono">{`// Install this component with the command above
-// It will be added to your components folder
-
-import { ${section.name.replace(/\s+/g, "")} } from "@/components/sections/${section.category}/${section.id}";
-
-export default function Page() {
-  return <${section.name.replace(/\s+/g, "")} />;
-}`}</code>
-                        </pre>
-                      </div>
-                    </div>
+                    <SectionCodeViewer section={section} className="h-[600px]" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -239,13 +215,8 @@ export default function Page() {
       </div>
 
       {/* Unique Section Separator */}
-      <div className="border-accent relative flex items-center justify-center border-y p-8">
-        <div className="border-accent absolute inset-0 mx-auto flex max-w-7xl items-center border-x">
-          <span className="absolute top-0 left-0 z-10 h-2 w-2 bg-zinc-300 xl:-top-1 xl:-left-2 dark:bg-zinc-600"></span>
-          <span className="absolute bottom-0 left-0 z-10 h-2 w-2 bg-zinc-300 xl:-bottom-1 xl:-left-2 dark:bg-zinc-600"></span>
-          <span className="absolute top-0 right-0 z-10 h-2 w-2 bg-zinc-300 xl:-top-1 xl:-right-2 dark:bg-zinc-600"></span>
-          <span className="absolute right-0 bottom-0 z-10 h-2 w-2 bg-zinc-300 xl:-right-2 xl:-bottom-1 dark:bg-zinc-600"></span>
-        </div>
+      <div className="border-accent bg-background relative flex items-center justify-center border-y p-8">
+        <div className="border-accent absolute inset-0 mx-auto flex max-w-7xl items-center border-x"></div>
       </div>
     </>
   );

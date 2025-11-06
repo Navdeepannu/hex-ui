@@ -1,20 +1,12 @@
 "use client";
-import { motion } from "motion/react";
 import * as React from "react";
-import { useState } from "react";
-import {
-  sections,
-  sectionCategories,
-  type SectionCategory,
-} from "@/data/sections-registry";
+import { sections, sectionCategories, type SectionCategory } from "@/data/sections-registry";
 import { cn } from "@/lib/utils";
 import { SectionPreviewCard } from "@/components/sections/section-preview-card";
-import { IconHexagon } from "@tabler/icons-react";
-import Link from "next/link";
 
 export default function TemplatesPage() {
   const [activeCategory, setActiveCategory] = React.useState<SectionCategory>(
-    sectionCategories[0].value,
+    sectionCategories[0].value
   );
   const [scrollY, setScrollY] = React.useState(0);
 
@@ -49,76 +41,32 @@ export default function TemplatesPage() {
     return groups;
   }, [filteredSections]);
 
-  const [hovered, setHovered] = useState<number | null>();
-
-  // Calculate transform based on scroll
-  const transformX = Math.min(scrollY * 0.2, 30); // Move right up to 200px
-  const showLogo = transformX > 5;
-
   return (
     <div className="min-h-screen">
       {/* Category Navigation */}
       <div className="dark:border-accent sticky top-0 z-40 mx-auto border-t border-b border-zinc-200 border-t-zinc-200/50 bg-white transition-transform duration-300 ease-out dark:bg-black">
         <div className="border-sidebar-accent relative mx-auto max-w-7xl border-x">
-          <motion.div
-            className="absolute top-0 left-0 flex h-full items-center px-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: showLogo ? 1 : 0,
-              scale: showLogo ? 1 : 0.8,
-            }}
-            transition={{
-              opacity: {
-                duration: showLogo ? 0.5 : 0,
-                ease: "easeOut",
-              },
-              scale: {
-                duration: showLogo ? 0.3 : 0,
-                ease: "easeOut",
-              },
-            }}
-            style={{
-              pointerEvents: showLogo ? "auto" : "none",
-            }}
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <IconHexagon strokeWidth={3} className="size-5" />
-            </Link>
-          </motion.div>
+          <nav className="flex items-center gap-2 overflow-x-auto px-4 py-3">
+            {/* Popular Tags Label */}
+            <span className="border-accent pr-2 border-r text-xs font-medium tracking-wider whitespace-nowrap text-neutral-500 uppercase dark:text-neutral-500">
+              Sections
+            </span>
 
-          <nav className="flex items-center overflow-x-auto px-2 py-1">
-            {sectionCategories.map((category, idx) => {
+            {/* Category Buttons */}
+            {sectionCategories.map((category) => {
               const isActive = activeCategory === category.value;
               return (
                 <button
                   key={category.value}
                   onClick={() => setActiveCategory(category.value)}
-                  onMouseEnter={() => setHovered(idx)}
-                  onMouseLeave={() => setHovered(null)}
                   className={cn(
-                    "text-muted-foreground relative cursor-pointer rounded-sm px-4 py-2 text-sm",
+                    "relative rounded-md px-4 py-1.5 text-xs font-medium tracking-wider whitespace-nowrap uppercase transition-colors duration-200",
                     isActive
-                      ? "text-foreground"
-                      : "hover:text-foreground transition duration-200",
+                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
+                      : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
                   )}
-                  style={{ transform: `translateX(${transformX}px)` }}
                 >
-                  {hovered === idx && (
-                    <motion.span
-                      layoutId="hovered-span"
-                      className="absolute inset-0 h-full w-full rounded-md bg-neutral-100 dark:bg-neutral-800"
-                      style={{ zIndex: -1 }}
-                      transition={{
-                        type: "spring",
-                        bounce: 0.2,
-                        duration: 0.4,
-                      }}
-                    />
-                  )}
-                  {isActive && (
-                    <span className="bg-accent-foreground absolute inset-x-0 -bottom-1 left-0 h-[1px] w-full" />
-                  )}
-                  <span className="relative z-10">{category.label}</span>
+                  {category.label}
                 </button>
               );
             })}
@@ -156,21 +104,16 @@ export default function TemplatesPage() {
             ) : (
               <>
                 <div className="space-y-32">
-                  {Array.from(groupedSections.entries()).map(
-                    ([category, categorySections]) => (
-                      <div key={category} className="space-y-16">
-                        {/* Section cards */}
-                        <div className="">
-                          {categorySections.map((section) => (
-                            <SectionPreviewCard
-                              key={section.id}
-                              section={section}
-                            />
-                          ))}
-                        </div>
+                  {Array.from(groupedSections.entries()).map(([category, categorySections]) => (
+                    <div key={category} className="space-y-16">
+                      {/* Section cards */}
+                      <div className="">
+                        {categorySections.map((section) => (
+                          <SectionPreviewCard key={section.id} section={section} />
+                        ))}
                       </div>
-                    ),
-                  )}
+                    </div>
+                  ))}
                 </div>
               </>
             )}
@@ -192,8 +135,8 @@ export default function TemplatesPage() {
                   Ready to build something beautiful?
                 </h2>
                 <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-pretty text-neutral-600 sm:text-lg dark:text-neutral-400">
-                  Join thousands of developers building amazing products with
-                  Hex UI. Get updates on new components and exclusive content.
+                  Join thousands of developers building amazing products with Hex UI. Get updates on
+                  new components and exclusive content.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-4">
@@ -243,16 +186,10 @@ export default function TemplatesPage() {
                       <div className="h-8 w-8 rounded-full border-2 border-white bg-gradient-to-br from-neutral-500 to-neutral-600 dark:border-neutral-950" />
                       <div className="h-8 w-8 rounded-full border-2 border-white bg-gradient-to-br from-neutral-600 to-neutral-700 dark:border-neutral-950" />
                     </div>
-                    <span className="font-medium">
-                      Trusted by 10,000+ developers
-                    </span>
+                    <span className="font-medium">Trusted by 10,000+ developers</span>
                   </div>
                   <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
-                    <svg
-                      className="h-5 w-5 text-amber-500"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                    <svg className="h-5 w-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     <span className="font-medium">4.9/5 average rating</span>

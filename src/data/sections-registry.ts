@@ -17,6 +17,14 @@ export type SectionCategory =
   | "faq"
   | "content";
 
+export interface CodeFile {
+  id: string;
+  name: string;
+  language: string;
+  code: string;
+  path?: string; // Optional path for organizing in folders
+}
+
 export interface Section {
   id: string;
   name: string;
@@ -27,6 +35,7 @@ export interface Section {
   installCommand: string;
   tags: string[];
   featured?: boolean;
+  files?: CodeFile[]; // Optional array of code files for this section
 }
 
 export const sections: Section[] = [
@@ -41,6 +50,8 @@ export const sections: Section[] = [
     installCommand: "npx shadcn@latest add https://hex-ui.com/r/hero-01",
     tags: ["gradient", "animated", "centered", "modern"],
     featured: true,
+    // Files are auto-generated from the actual component source files
+    // Run `npm run generate:section-code` to update
   },
   {
     id: "hero-02",

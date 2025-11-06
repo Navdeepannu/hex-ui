@@ -1,167 +1,244 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef } from "react";
+import { motion, useInView, useSpring, useTransform } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IconArrowRight, IconSparkles, IconCode } from "@tabler/icons-react";
-import { useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { AnimatedText } from "@/components/showcase/text-effect";
 
-export function Hero() {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+// Animated counter component
+function AnimatedCounter({
+  value,
+  suffix = "",
+  delay = 0,
+}: {
+  value: number;
+  suffix?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const springValue = useSpring(0, { duration: 2000, bounce: 0 });
+  const display = useTransform(springValue, (latest) => Math.floor(latest).toLocaleString());
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => {
+        springValue.set(value);
+      }, delay);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, springValue, value, delay]);
 
   return (
-    <motion.section
-      ref={containerRef}
-      style={{ opacity, scale }}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-32"
-    >
-      {/* Animated background grid */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background"
-        />
-      </div>
+    <span ref={ref}>
+      <motion.span>{display}</motion.span>
+      {suffix}
+    </span>
+  );
+}
 
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex items-center justify-center gap-2 mb-6"
-        >
-          <motion.div
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <IconSparkles className="h-5 w-5 text-muted-foreground" />
-          </motion.div>
-          <span className="text-sm font-medium text-muted-foreground tracking-wide uppercase">
-            Production-Ready Components
-          </span>
-        </motion.div>
+export function Hero() {
+  return (
+    <div className="overflow-hidden">
+      <section className="relative pt-24 md:pt-36">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid gap-20 md:grid-cols-2 md:gap-6">
+            <div className="flex flex-col items-start justify-around gap-8">
+              {/* Heading */}
+              <div className="space-y-4">
+                <motion.div className="space-y-2">
+                  <AnimatedText
+                    as="h1"
+                    preset="fade-in-blur"
+                    delay={0}
+                    speed={0.4}
+                    staggerDelay={0.5}
+                    className="text-3xl leading-[1.1] font-semibold tracking-tight text-neutral-900 xl:text-5xl dark:text-white"
+                  >
+                    Build stunning interfaces, effortlessly with{" "}
+                    <span className="font-bold text-neutral-400 dark:text-neutral-700">
+                      components that just work.
+                    </span>
+                  </AnimatedText>
+                  <AnimatedText
+                    as="p"
+                    preset="stagger-words-blur"
+                    delay={0.4}
+                    staggerDelay={0.035}
+                    speed={0.45}
+                    className="max-w-xl text-sm leading-relaxed text-neutral-500 md:text-base dark:text-neutral-400"
+                  >
+                    A modern React component library crafted for speed, consistency, and beauty.
+                    Ship polished UIs in minutes — not days.
+                  </AnimatedText>
+                </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-center mb-8 tracking-tight"
-        >
-          <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Build faster.
-          </span>
-          <span className="block bg-gradient-to-b from-foreground/70 to-foreground/40 bg-clip-text text-transparent">
-            Ship better.
-          </span>
-        </motion.h1>
+                {/* CTA Buttons */}
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    filter: "blue(8px)",
+                    y: 10,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    filter: "blue(0px)",
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.4,
+                    ease: "linear",
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  className="flex flex-row items-start gap-4"
+                >
+                  <Button asChild size="lg" className="group">
+                    <Link
+                      href="/components"
+                      className="inline-flex items-center gap-2 rounded-none"
+                    >
+                      Components
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-rotate-45" />
+                    </Link>
+                  </Button>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-lg sm:text-xl md:text-2xl text-muted-foreground text-center max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          A curated collection of premium React components and templates.
-          Copy, paste, and customize. Built with{" "}
-          <span className="text-foreground font-medium">shadcn/ui</span> and{" "}
-          <span className="text-foreground font-medium">Tailwind CSS</span>.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Button
-            size="lg"
-            className="group relative overflow-hidden rounded-xl px-8 py-6 text-base font-medium shadow-lg"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              Browse Components
-              <motion.div
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <IconArrowRight className="h-4 w-4" />
-              </motion.div>
-            </span>
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="group rounded-xl px-8 py-6 text-base font-medium"
-          >
-            <IconCode className="h-4 w-4 mr-2" />
-            View Templates
-          </Button>
-        </motion.div>
-
-        {/* Floating stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-24 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-        >
-          {[
-            { label: "Components", value: "50+" },
-            { label: "Templates", value: "12+" },
-            { label: "Variants", value: "200+" },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
-                {stat.value}
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="group hover:bg-background cursor-pointer rounded-none shadow-[inset_0px_1px_2px_#ffffff70,0px_1px_2px_#00000030,0px_2px_4px_#00000015] transition-shadow duration-200 hover:shadow-2xs dark:shadow-none"
+                  >
+                    <Link href="/templates" className="inline-flex items-center gap-2">
+                      Browse Templates
+                    </Link>
+                  </Button>
+                </motion.div>
               </div>
-              <div className="text-sm text-muted-foreground font-medium">
-                {stat.label}
+
+              {/* Stats */}
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15,
+                      delayChildren: 0.6,
+                    },
+                  },
+                }}
+                className="border-border grid grid-cols-3 gap-4"
+              >
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, x: -40 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    },
+                  }}
+                  className="border-border relative border border-dashed p-4"
+                >
+                  <span className="absolute -top-px -left-px h-2 w-2 border-t border-l border-neutral-400" />
+                  <span className="absolute -bottom-px -left-px h-2 w-2 border-b border-l border-neutral-400" />
+                  <span className="absolute -right-px -bottom-px h-2 w-2 border-r border-b border-neutral-400" />
+                  <span className="absolute -top-px -right-px h-2 w-2 border-t border-r border-neutral-400" />
+                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                    <AnimatedCounter value={10} suffix="K+" delay={800} />
+                  </div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                    Developers building faster
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, x: -40 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    },
+                  }}
+                  className="border-border relative border border-dashed p-4"
+                >
+                  <span className="absolute -top-px -left-px h-2 w-2 border-t border-l border-neutral-400" />
+                  <span className="absolute -bottom-px -left-px h-2 w-2 border-b border-l border-neutral-400" />
+                  <span className="absolute -right-px -bottom-px h-2 w-2 border-r border-b border-neutral-400" />
+                  <span className="absolute -top-px -right-px h-2 w-2 border-t border-r border-neutral-400" />
+
+                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                    <AnimatedCounter value={99} suffix="%" delay={950} />
+                  </div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                    Designers love the polish
+                  </div>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, x: -40 },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    },
+                  }}
+                  className="border-border relative border border-dashed p-4"
+                >
+                  <span className="absolute -top-px -left-px h-2 w-2 border-t border-l border-neutral-400" />
+                  <span className="absolute -bottom-px -left-px h-2 w-2 border-b border-l border-neutral-400" />
+                  <span className="absolute -right-px -bottom-px h-2 w-2 border-r border-b border-neutral-400" />
+                  <span className="absolute -top-px -right-px h-2 w-2 border-t border-r border-neutral-400" />
+                  <div className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                    <AnimatedCounter value={150} suffix="+" delay={1100} />
+                  </div>
+                  <div className="text-sm text-neutral-600 dark:text-neutral-400">
+                    Production-ready building blocks
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Right Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative order-last"
+            >
+              <div className="group relative aspect-4/3 overflow-hidden border border-neutral-400 dark:border-neutral-600">
+                <Image
+                  src="/brand_logos/Dashboard.png"
+                  alt="Product dashboard showcasing analytics and insights"
+                  fill
+                  priority
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                  className="transition-800 object-cover p-0.5 transition-transform ease-in-out group-hover:scale-102"
+                />
               </div>
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
-        >
-          <motion.div
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50"
-          />
-        </motion.div>
-      </motion.div>
-    </motion.section>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
