@@ -19,13 +19,7 @@ import { CommandPalette } from "@/components/command-palette";
 import { Kbd, KbdGroup } from "../ui/kbd";
 import { cn } from "@/lib/utils";
 
-export function Navbar({
-  template,
-  className,
-}: {
-  template?: boolean;
-  className?: string;
-}) {
+export function Navbar({ template, className }: { template?: boolean; className?: string }) {
   const { toggleSidebar } = useSidebar();
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
@@ -88,26 +82,21 @@ export function Navbar({
 
   return (
     <>
-      <CommandPalette
-        open={commandPaletteOpen}
-        onOpenChange={setCommandPaletteOpen}
-      />
+      <CommandPalette open={commandPaletteOpen} onOpenChange={setCommandPaletteOpen} />
 
       <nav
         className={cn(
           template
             ? "top-0 z-50 w-full bg-white/70 text-zinc-700 backdrop-blur-2xl dark:bg-black dark:text-white"
             : "sticky top-0 z-50 w-full bg-white/70 px-6 text-black backdrop-blur-xl dark:bg-black dark:text-white",
-          className,
+          className
         )}
       >
-        <div className="mx-auto flex w-full items-center justify-between px-2 py-3 2xl:max-w-[86rem]">
+        <div className="mx-auto flex w-full items-center justify-between px-2 py-3 2xl:max-w-344">
           <div className="flex items-center space-x-4">
             <Link href="/" className="group flex items-center space-x-1">
               <IconHexagon strokeWidth={3} className="size-6" />
-              <span className="hidden text-xl font-bold tracking-tight lg:flex">
-                Hex UI
-              </span>
+              <span className="hidden text-xl font-bold tracking-tight lg:flex">Hex UI</span>
             </Link>
 
             <div className="hidden space-x-1 lg:flex">
@@ -175,11 +164,7 @@ export function Navbar({
               size="icon"
               className="hover:text-foreground text-muted-foreground hidden rounded-full transition-colors hover:bg-transparent md:inline-flex"
             >
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
                 <IconBrandGithub className="h-5 w-5" />
               </a>
             </Button>

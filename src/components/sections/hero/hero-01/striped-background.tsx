@@ -12,7 +12,7 @@ interface StripedBackgroundProps {
 
 export function StripedBackground({
   className,
-  stripeWidth = 50,
+  stripeWidth = 80,
   fadeDirection = "bottom",
   position = "both",
 }: StripedBackgroundProps) {

@@ -27,8 +27,8 @@ interface AnimatedTextProps extends Omit<HTMLMotionProps<"div">, "children"> {
 
 const presetAnimations = {
   "fade-in-blur": {
-    initial: { opacity: 0, filter: "blur(5px)" },
-    animate: { opacity: 1, filter: "blur(0px)" },
+    initial: { opacity: 0, filter: "blur(5px)", y: 10 },
+    animate: { opacity: 1, filter: "blur(0px)", y: 0 },
   },
   "slide-up": {
     initial: { opacity: 0, y: 20 },
@@ -63,7 +63,7 @@ const presetAnimations = {
     animate: { opacity: 1 },
   },
   "stagger-words-blur": {
-    initial: { opacity: 0, filter: "blur(8px)", y: 5 },
+    initial: { opacity: 0, filter: "blur(8px)", y: 10 },
     animate: { opacity: 1, filter: "blur(0px)", y: 0 },
   },
 };

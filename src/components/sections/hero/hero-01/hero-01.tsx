@@ -90,14 +90,14 @@ export function Hero01() {
           </motion.div>
 
           {/* App Preview Section */}
-          <div className="w-full max-w-6xl mask-b-from-55% pt-8 md:pt-12">
+          <div className="z-10 w-full max-w-6xl mask-b-from-70% pt-8 md:pt-12">
             <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.9, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
               className="border-accent relative overflow-visible rounded-2xl border bg-neutral-50 p-2 shadow-[inset_0_1px_2px_#ffffff50] md:rounded-3xl md:p-3 dark:bg-neutral-950"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl md:rounded-2xl">
+              <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl md:rounded-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1702479744181-2d6b58941583?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670"
                   alt="App preview"

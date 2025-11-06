@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 import { Hero01 } from "@/components/sections/hero/hero-01/hero-01";
-import { Hero02 } from "@/components/sections/hero/hero-02";
+import { Hero02 } from "@/components/sections/hero/hero-02/hero-02";
 import { Hero03 } from "@/components/sections/hero/hero-03";
 import { Features01 } from "@/components/sections/features/features-01";
 import { Pricing01 } from "@/components/sections/pricing/pricing-01";
